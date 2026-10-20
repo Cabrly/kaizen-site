@@ -29,6 +29,53 @@ menu.addEventListener("click", (e) => { if (e.target.closest("a")) fecharMenu();
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") fecharMenu(); });
 
 
+/* ---------- demo: o app de verdade dentro da janela do herói ----------
+   O app é desenhado com 1280 px de largura e encolhido pra caber na janela,
+   então fica igual ao print. Abaixo de 640 px ficaria pequeno demais pra
+   usar: aí fica o print com um botão que abre a demo em outra aba. */
+
+const LARGURA_APP = 1280;
+const figuraDemo = document.querySelector("[data-demo]");
+
+if (figuraDemo) {
+    // ?demo-url=... no endereço do site troca a demo (pra testar uma cópia local do app)
+    const urlDemo = new URLSearchParams(location.search).get("demo-url") || figuraDemo.dataset.demo;
+    const tela = figuraDemo.querySelector(".janela-tela");
+    let quadro = null;
+
+    figuraDemo.querySelectorAll("[data-demo-abrir], .demo-abrir-celular").forEach((a) => (a.href = urlDemo));
+
+    function encaixar() {
+        if (!quadro) return;
+        const escala = tela.clientWidth / LARGURA_APP;
+        quadro.style.width = `${LARGURA_APP}px`;
+        quadro.style.height = `${tela.clientHeight / escala}px`;
+        quadro.style.transform = `scale(${escala})`;
+    }
+
+    function carregar() {
+        if (quadro || tela.clientWidth < 640) return;
+        figuraDemo.classList.remove("sem-demo");
+        quadro = document.createElement("iframe");
+        quadro.title = "Demonstração interativa do Kaizen";
+        quadro.src = urlDemo;
+        quadro.addEventListener("load", () => setTimeout(() => quadro.classList.add("pronto"), 400));
+        tela.append(quadro);
+        encaixar();
+    }
+
+    figuraDemo.classList.toggle("sem-demo", tela.clientWidth < 640);
+    carregar();
+    window.addEventListener("resize", () => { carregar(); encaixar(); });
+
+    figuraDemo.querySelector("[data-demo-zerar]").addEventListener("click", () => {
+        if (!quadro) return;
+        quadro.classList.remove("pronto");
+        quadro.src = urlDemo;   // a demo guarda tudo em memória: recarregar volta ao começo
+    });
+}
+
+
 /* ---------- cenas: troca a imagem grande e a legenda ---------- */
 
 const cenas = document.querySelector("[data-cenas]");

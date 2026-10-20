@@ -80,11 +80,22 @@
         <p class="heroi-nota">Windows · Linux · Mac · iPhone · Android — sem conta, sem cartão.</p>
     </div>
 
-    <figure class="heroi-tela">
+    <!-- O app de verdade, no modo demonstração (?demo): dados de exemplo que somem ao
+         recarregar. Em tela pequena fica só o print, com um botão pra abrir a demo. -->
+    <figure class="heroi-tela" data-demo="https://cabrly.github.io/kaizen/?demo">
+        <p class="demo-selo"><span class="demo-ponto" aria-hidden="true"></span>Experimente aqui mesmo: é o app de verdade</p>
         <div class="janela">
-            <div class="janela-barra" aria-hidden="true"><i></i><i></i><i></i><span>Kaizen</span></div>
-            <img src="img/telas/kanban.webp" width="2880" height="1800"
-                 alt="Quadro kanban do Kaizen com as colunas A fazer, Em andamento, Em revisão e Concluído, sobre a cena do pagode à noite.">
+            <div class="janela-barra">
+                <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
+                <span class="janela-endereco">cabrly.github.io/kaizen</span>
+                <button class="janela-botao" type="button" data-demo-zerar title="Voltar a demonstração ao começo">↺ Recomeçar</button>
+                <a class="janela-botao" href="https://cabrly.github.io/kaizen/?demo" target="_blank" rel="noopener" data-demo-abrir>Tela cheia ↗</a>
+            </div>
+            <div class="janela-tela">
+                <img src="img/telas/kanban.webp" width="2880" height="1800" data-demo-print
+                     alt="Quadro kanban do Kaizen com as colunas A fazer, Em andamento, Em revisão e Concluído, sobre a cena do pagode à noite.">
+                <a class="demo-abrir-celular botao" href="https://cabrly.github.io/kaizen/?demo" target="_blank" rel="noopener">Experimentar a demonstração</a>
+            </div>
         </div>
     </figure>
 </section>
@@ -459,9 +470,9 @@
      Pra trocar a chave Pix, edite só os três data-pix-* abaixo.
      Nome: até 25 letras; cidade: até 15 (sem acento é mais seguro). -->
 <section class="secao secao-papel" id="apoie"
-         data-pix-chave=""
-         data-pix-nome=""
-         data-pix-cidade="">
+         data-pix-chave="cc99ff46-3c97-468b-a006-e71fbb7d7364"
+         data-pix-nome="Vitor Cabral"
+         data-pix-cidade="Palmas">
     <div class="apoie">
         <div class="apoie-texto">
             <p class="sobretitulo"><span lang="ja">応援</span> · apoie</p>
