@@ -127,13 +127,27 @@ const lupa = document.querySelector(".lupa");
 
 if (lupa && typeof lupa.showModal === "function") {
     const img = lupa.querySelector("img");
+    const filme = document.createElement("video");
+    Object.assign(filme, { muted: true, loop: true, playsInline: true, hidden: true });
+    img.after(filme);
     document.querySelectorAll("[data-ampliar]").forEach((botao) => {
         botao.addEventListener("click", () => {
-            img.src = botao.dataset.ampliar;
-            img.alt = botao.querySelector("img").alt;
+            // tópico com vídeo abre o vídeo grande; os outros, a imagem
+            const video = botao.dataset.video;
+            img.hidden = Boolean(video);
+            filme.hidden = !video;
+            if (video) {
+                filme.src = video;
+                filme.setAttribute("aria-label", botao.querySelector("img").alt);
+                filme.play().catch(() => {});
+            } else {
+                img.src = botao.dataset.ampliar;
+                img.alt = botao.querySelector("img").alt;
+            }
             lupa.showModal();
         });
     });
+    lupa.addEventListener("close", () => filme.pause());
     lupa.querySelector(".lupa-fechar").addEventListener("click", () => lupa.close());
     lupa.addEventListener("click", (e) => { if (e.target === lupa) lupa.close(); });
 } else {
@@ -213,3 +227,38 @@ fetch(`https://api.github.com/repos/${REPO}/releases/latest`, { headers: { Accep
         if (rotuloVersao && versao.tag_name) rotuloVersao.textContent = `Versão atual: ${versao.tag_name}.`;
     })
     .catch(() => { /* fica com os links pra página de versões */ });
+
+
+/* ---------- telas que viram vídeo ---------- */
+
+// no PC, passar o mouse; no celular (sem mouse), tocar quando a tela aparece
+const semMouse = window.matchMedia("(hover: none)").matches;
+const calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+document.querySelectorAll(".recurso-tela video").forEach((video) => {
+
+    const tela = video.closest(".recurso-tela");
+    let voltar = null;
+
+    const tocar = () => {
+        clearTimeout(voltar);
+        video.preload = "auto";
+        video.play().then(() => tela.classList.add("tocando")).catch(() => {});
+    };
+
+    const parar = () => {
+        tela.classList.remove("tocando");
+        // depois do fade, volta pro começo: da próxima vez começa do início
+        voltar = setTimeout(() => { video.pause(); video.currentTime = 0; }, 350);
+    };
+
+    if (!semMouse) {
+        tela.addEventListener("mouseenter", tocar);
+        tela.addEventListener("mouseleave", parar);
+        tela.addEventListener("focus", tocar);
+        tela.addEventListener("blur", parar);
+    } else if (!calmo && "IntersectionObserver" in window) {
+        new IntersectionObserver(([entrada]) => (entrada.isIntersecting ? tocar() : parar()), { threshold: 0.6 }).observe(tela);
+    }
+
+});
