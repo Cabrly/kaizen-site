@@ -148,7 +148,7 @@ const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (!reduzir && "IntersectionObserver" in window) {
     const alvos = document.querySelectorAll(
-        ".secao-cabeca, .recurso, .passos li, .destaque, .cenas, .celular-texto, .celulares, .cartao, .nivel, .tabela-rolar, .dica, .sistema, .faq"
+        ".secao-cabeca, .recurso, .passos li, .destaque, .cenas, .celular-texto, .celulares, .cartao, .nivel, .tabela-rolar, .dica, .sistema, .faq, .opcao-ia, .tutorial"
     );
     const olho = new IntersectionObserver((itens) => {
         itens.forEach((item) => {

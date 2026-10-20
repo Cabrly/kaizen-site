@@ -497,6 +497,77 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 .pix-dica { font-size: 13px; color: var(--tinta-3); }
 
 
+/* ---------------- sua IA e tutorial do OpenRouter ---------------- */
+
+.opcoes-ia { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.opcao-ia {
+    position: relative; display: flex; flex-direction: column; gap: 8px;
+    padding: 28px 24px; background: var(--branco); border-radius: var(--raio); box-shadow: var(--sombra);
+}
+.opcao-ia h3 { font: 700 21px/1.2 var(--serifa); }
+.opcao-quem { font-size: 13px; font-weight: 700; color: var(--vermelho); }
+.opcao-ia > p:not(.opcao-quem):not(.opcao-selo) { font-size: 15px; color: var(--tinta-2); }
+.opcao-ia a { margin-top: auto; padding-top: 8px; font-size: 14px; font-weight: 700; text-decoration: none; }
+.opcao-nota { margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--tinta-3); }
+.opcao-destaque { outline: 2px solid var(--vermelho); }
+.opcao-selo {
+    position: absolute; top: -12px; left: 24px; padding: 2px 12px; border-radius: 999px;
+    font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: #fff; background: var(--vermelho);
+}
+
+.tutorial { margin-top: 72px; padding: 48px; background: var(--branco); border-radius: 20px; box-shadow: var(--sombra); }
+.tutorial-titulo { font: 700 clamp(24px, 3vw, 32px)/1.2 var(--serifa); text-align: center; }
+.tutorial-sub { margin-top: 10px; text-align: center; color: var(--tinta-2); }
+.tutorial-passos {
+    margin: 40px 0 0; padding: 0; list-style: none; counter-reset: passo;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+}
+.tutorial-passos li { counter-increment: passo; }
+.tutorial-passos h4 { margin: 18px 0 6px; font-size: 18px; }
+.tutorial-passos h4::before {
+    content: counter(passo); display: inline-grid; place-items: center; width: 28px; height: 28px; margin-right: 10px;
+    border-radius: 50%; font: 900 14px/1 var(--serifa); color: #fff; background: var(--vermelho); vertical-align: 2px;
+}
+.tutorial-passos p { font-size: 15px; color: var(--tinta-2); }
+.tutorial-nota {
+    margin-top: 36px; padding: 16px 20px; border-radius: 12px; font-size: 14px;
+    color: var(--tinta-2); background: var(--papel-2);
+}
+
+/* telinhas desenhadas em CSS, só pra pessoa reconhecer o que vai ver */
+.mock { overflow: hidden; border-radius: 10px; border: 1px solid var(--linha); background: #fff; font-family: var(--sans); }
+.mock-barra { display: flex; align-items: center; height: 26px; padding: 0 10px; background: var(--papel-2); }
+.mock-barra span {
+    flex: 1; padding: 1px 8px; border-radius: 4px; font-size: 10px; color: var(--tinta-3);
+    background: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mock-corpo { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; height: 118px; padding: 16px; }
+.mock-centro { align-items: center; justify-content: center; }
+.mock-logo { font-weight: 700; font-size: 15px; }
+.mock-titulo { font-weight: 700; font-size: 13px; }
+.mock-botao { padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; color: #fff; background: #4f46e5; }
+.mock-escuro { background: #111; }
+.mock-vermelho { background: var(--vermelho); }
+.mock-campo {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%;
+    padding: 6px 8px; border: 1px solid var(--linha); border-radius: 6px;
+}
+.mock-campo code { padding: 0; background: none; font-size: 11px; }
+.mock-copiar { font-size: 11px; font-weight: 700; color: #4f46e5; }
+.mock-kaizen { background: #1b1b1b; border-color: #1b1b1b; }
+.mock-kaizen .mock-barra { background: #2a2a2a; }
+.mock-kaizen .mock-barra span { background: #3a3a3a; color: #bbb; }
+.mock-kaizen .mock-titulo { color: #fff; }
+.mock-kaizen .mock-campo { border-color: #444; }
+.mock-kaizen .mock-campo code { color: #ddd; }
+.mock-cursor {
+    position: absolute; left: 62%; top: 64%; width: 14px; height: 14px;
+    background: var(--tinta); clip-path: polygon(0 0, 0 100%, 30% 72%, 55% 100%, 70% 92%, 45% 66%, 85% 62%);
+}
+.mock-cursor-2 { left: 34%; top: 60%; }
+
+
 /* ---------------- final e rodapé ---------------- */
 
 .final {
@@ -551,7 +622,7 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 /* ---------------- telas menores ---------------- */
 
 @media (max-width: 1080px) {
-    .cartoes, .niveis, .baixar { grid-template-columns: repeat(2, 1fr); }
+    .cartoes, .niveis, .baixar, .opcoes-ia, .tutorial-passos { grid-template-columns: repeat(2, 1fr); }
     .faixa ul { grid-template-columns: repeat(2, 1fr); }
     .cenas-lista { grid-template-columns: repeat(3, 1fr); }
 }
@@ -597,7 +668,8 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
     .janela-barra i { width: 8px; height: 8px; }
     .janela-endereco { font-size: 11px; padding: 2px 8px; }
     .faixa { padding: 40px 16px 0; }
-    .faixa ul, .cartoes, .niveis, .baixar { grid-template-columns: 1fr; }
+    .faixa ul, .cartoes, .niveis, .baixar, .opcoes-ia, .tutorial-passos { grid-template-columns: 1fr; }
+    .tutorial { padding: 28px 20px; }
     .secao-cabeca { margin-bottom: 44px; }
     .cenas-lista { grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .cenas-palco { aspect-ratio: auto; display: flex; flex-direction: column; }

@@ -37,7 +37,7 @@
         <nav class="menu" id="menu" aria-label="Principal">
             <a href="#recursos">Recursos</a>
             <a href="#como-funciona">Como funciona</a>
-            <a href="#cenas">Cenas</a>
+            <a href="#sua-ia">Sua IA</a>
             <a href="#requisitos">Requisitos</a>
             <a href="#perguntas">Perguntas</a>
             <a href="#apoie">Apoie</a>
@@ -160,6 +160,7 @@
             <ul class="lista-check">
                 <li>IA no seu computador, em outro PC da sua rede ou na nuvem</li>
                 <li>Funciona com Ollama, OpenRouter (grátis), Claude, ChatGPT e Gemini</li>
+                <li>Já assina? Usa o <b>Claude Code</b>, o <b>Gemini CLI</b> ou o <b>Codex</b> com o seu login</li>
                 <li>Você escolhe o modelo e onde ele roda</li>
             </ul>
         </div>
@@ -324,6 +325,99 @@
     </div>
 </section>
 
+<!-- =========================== SUA IA =========================== -->
+<section class="secao" id="sua-ia">
+    <header class="secao-cabeca">
+        <p class="sobretitulo"><span lang="ja">選ぶ</span> · escolha</p>
+        <h2>Escolha a IA que combina com você</h2>
+        <p>O Kaizen não te prende a nenhuma. Comece pela grátis e troque quando quiser, em <b>Assistente IA → Onde a IA roda</b>.</p>
+    </header>
+
+    <div class="opcoes-ia">
+        <div class="opcao-ia opcao-destaque">
+            <p class="opcao-selo">Mais fácil</p>
+            <h3>Grátis na nuvem</h3>
+            <p class="opcao-quem">OpenRouter</p>
+            <p>Funciona em qualquer aparelho, até no celular. Cria a conta em 2 minutos, sem cartão.</p>
+            <a href="#openrouter">Ver o passo a passo ↓</a>
+        </div>
+        <div class="opcao-ia">
+            <h3>Grátis no seu PC</h3>
+            <p class="opcao-quem">Ollama</p>
+            <p>A IA roda na sua placa de vídeo e nada sai do computador. O app instala tudo num clique.</p>
+            <a href="#requisitos">Que PC eu preciso? ↓</a>
+        </div>
+        <div class="opcao-ia">
+            <h3>Sua assinatura</h3>
+            <p class="opcao-quem">Claude Code · Gemini CLI · Codex</p>
+            <p>Já paga o Claude, o Gemini ou o ChatGPT? Faça login na ferramenta de terminal e o Kaizen usa ela, sem chave.</p>
+            <span class="opcao-nota">No app de computador</span>
+        </div>
+        <div class="opcao-ia">
+            <h3>Chave de API</h3>
+            <p class="opcao-quem">Claude · ChatGPT · Gemini</p>
+            <p>Pra quem já tem conta de desenvolvedor: cola a chave e escolhe o modelo. Paga só o que usar.</p>
+        </div>
+    </div>
+
+    <div class="tutorial" id="openrouter">
+        <h3 class="tutorial-titulo">IA grátis em 4 passos, com o OpenRouter</h3>
+        <p class="tutorial-sub">Leva uns 2 minutos. Não precisa de cartão nem de saber programar.</p>
+
+        <ol class="tutorial-passos">
+            <li>
+                <div class="mock" aria-hidden="true">
+                    <div class="mock-barra"><span>openrouter.ai</span></div>
+                    <div class="mock-corpo mock-centro">
+                        <span class="mock-logo">OpenRouter</span>
+                        <span class="mock-botao mock-escuro">Sign in</span>
+                        <span class="mock-cursor"></span>
+                    </div>
+                </div>
+                <h4>Crie sua conta</h4>
+                <p>Abra <a href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a> e clique em <b>Sign in</b>. O jeito mais rápido é <b>entrar com o Google</b>.</p>
+            </li>
+            <li>
+                <div class="mock" aria-hidden="true">
+                    <div class="mock-barra"><span>openrouter.ai/keys</span></div>
+                    <div class="mock-corpo">
+                        <span class="mock-titulo">API Keys</span>
+                        <span class="mock-botao">Create Key</span>
+                        <span class="mock-cursor mock-cursor-2"></span>
+                    </div>
+                </div>
+                <h4>Crie uma chave</h4>
+                <p>Vá em <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>, clique em <b>Create Key</b>, dê um nome (ex.: <i>Kaizen</i>) e confirme.</p>
+            </li>
+            <li>
+                <div class="mock" aria-hidden="true">
+                    <div class="mock-barra"><span>openrouter.ai/keys</span></div>
+                    <div class="mock-corpo">
+                        <span class="mock-titulo">Your new key</span>
+                        <span class="mock-campo"><code>sk-or-v1-8f3a…c21e</code><span class="mock-copiar">Copy</span></span>
+                    </div>
+                </div>
+                <h4>Copie a chave</h4>
+                <p>Copie o código que aparece (começa com <code>sk-or-</code>). <b>Ele só aparece uma vez</b>: se perder, é só criar outro.</p>
+            </li>
+            <li>
+                <div class="mock mock-kaizen" aria-hidden="true">
+                    <div class="mock-barra"><span>Kaizen · Assistente IA</span></div>
+                    <div class="mock-corpo">
+                        <span class="mock-titulo">☁ Conectar OpenRouter</span>
+                        <span class="mock-campo"><code>sk-or-v1-8f3a…c21e</code></span>
+                        <span class="mock-botao mock-vermelho">Salvar</span>
+                    </div>
+                </div>
+                <h4>Cole no Kaizen</h4>
+                <p>No Kaizen, abra <b>Assistente IA → Onde a IA roda → Conectar OpenRouter</b>, cole e clique em <b>Salvar</b>. Pronto!</p>
+            </li>
+        </ol>
+
+        <p class="tutorial-nota">O Kaizen usa só os modelos <b>grátis</b> do OpenRouter, então nada é cobrado. Nos horários de pico eles podem ficar mais lentos, e a conta grátis tem um limite diário de pedidos (um plano de estudo gasta poucos).</p>
+    </div>
+</section>
+
 <!-- =========================== REQUISITOS =========================== -->
 <section class="secao" id="requisitos">
     <header class="secao-cabeca">
@@ -458,6 +552,14 @@
         <details>
             <summary>Atualizar apaga minhas tarefas?</summary>
             <p>Não. Os dados ficam na pasta do usuário, separados do programa. E dá pra fazer backup em arquivo a qualquer hora.</p>
+        </details>
+        <details>
+            <summary>Já pago o Claude, o ChatGPT ou o Gemini. Dá pra usar?</summary>
+            <p>Dá. Se você usa o <b>Claude Code</b>, o <b>Gemini CLI</b> ou o <b>Codex</b>, instale, faça login uma vez no terminal e abra o Kaizen no computador: eles aparecem sozinhos em “Onde a IA roda”, usando a sua assinatura, sem chave de API. Também dá pra conectar uma chave de API do Claude, do ChatGPT ou do Gemini.</p>
+        </details>
+        <details>
+            <summary>O que é essa “chave” do OpenRouter? É seguro?</summary>
+            <p>É como uma senha que deixa o Kaizen usar a IA da sua conta no OpenRouter. Ela fica guardada só no seu aparelho e você pode apagar ou criar outra quando quiser, em openrouter.ai/keys. Com modelos grátis, não tem cobrança nenhuma: nem precisa cadastrar cartão.</p>
         </details>
         <details>
             <summary>Dá pra ver o código?</summary>
