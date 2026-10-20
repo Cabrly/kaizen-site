@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel do Kaizen</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23c90016'/><text x='50' y='66' font-size='44' text-anchor='middle' fill='white'>改</text></svg>">
+<style>
+    :root {
+        --surface: #fcfcfb; --fundo: #f3f2ef; --cartao: #ffffff; --linha: #e4e3df;
+        --texto: #0b0b0b; --texto-2: #52514e; --texto-3: #7b7a75;
+        --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --marca: #c90016;
+        color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --surface: #1a1a19; --fundo: #121211; --cartao: #1a1a19; --linha: #2e2e2c;
+            --texto: #f0efec; --texto-2: #c3c2b7; --texto-3: #8f8e86;
+            --s1: #3987e5; --s2: #d95926; --s3: #199e70; --marca: #e2384c;
+            color-scheme: dark;
+        }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body { font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--texto); background: var(--fundo); }
+    main { max-width: 1120px; margin: 0 auto; padding: 28px 16px 64px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+    h1 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
+    h1 span { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--marca); color: #fff; font-size: 15px; }
+    .atualizado { color: var(--texto-3); font-size: 13px; }
+    button, input { font: inherit; }
+    .botao { padding: 8px 14px; border: 1px solid var(--linha); border-radius: 8px; background: var(--cartao); color: var(--texto); cursor: pointer; }
+    .entrar { max-width: 420px; margin: 12vh auto; padding: 28px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 14px; }
+    .entrar h2 { font-size: 18px; margin-bottom: 8px; }
+    .entrar p { color: var(--texto-2); font-size: 14px; margin-bottom: 16px; }
+    .entrar input { width: 100%; padding: 10px 12px; border: 1px solid var(--linha); border-radius: 8px; background: var(--surface); color: var(--texto); margin-bottom: 12px; }
+    .erro { color: var(--marca); font-size: 14px; min-height: 1.2em; }
+    .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .tile { padding: 16px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; }
+    .tile strong { display: block; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+    .tile span { font-size: 13px; font-weight: 600; }
+    .tile small { display: block; color: var(--texto-3); font-size: 12px; }
+    .grade { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .bloco { padding: 18px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 12px; min-width: 0; }
+    .bloco.largo { grid-column: 1 / -1; }
+    .bloco h2 { font-size: 15px; margin-bottom: 2px; }
+    .bloco > p { color: var(--texto-3); font-size: 12px; margin-bottom: 12px; }
+    .legenda { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; color: var(--texto-2); margin-bottom: 8px; }
+    .legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+    .grafico { position: relative; }
+    .grafico svg { display: block; width: 100%; height: 220px; overflow: visible; }
+    .grafico text { fill: var(--texto-3); font-size: 11px; }
+    .grafico .grade-y { stroke: var(--linha); stroke-width: 1; }
+    .grafico .alvo { fill: transparent; }
+    .grafico .alvo:hover + .realce, .grafico .realce.ativo { opacity: 1; }
+    .realce { fill: var(--texto); opacity: 0; pointer-events: none; }
+    .dica { position: absolute; pointer-events: none; padding: 8px 10px; background: var(--cartao); border: 1px solid var(--linha); border-radius: 8px; box-shadow: 0 6px 18px rgba(0,0,0,.12); font-size: 12px; white-space: nowrap; display: none; z-index: 2; }
+    .dica b { display: block; margin-bottom: 2px; }
+    .dica i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 6px; }
+    .barras { display: flex; flex-direction: column; gap: 8px; }
+    .barra { display: grid; grid-template-columns: 130px 1fr 44px; align-items: center; gap: 10px; font-size: 13px; }
+    .barra div { height: 10px; background: var(--fundo); border-radius: 0 4px 4px 0; }
+    .barra div i { display: block; height: 100%; background: var(--s1); border-radius: 0 4px 4px 0; min-width: 2px; }
+    .barra b { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+    .vazio { color: var(--texto-3); font-size: 13px; }
+    details { margin-top: 16px; }
+    summary { cursor: pointer; color: var(--texto-2); font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+    th, td { padding: 4px 6px; border-bottom: 1px solid var(--linha); text-align: right; }
+    th:first-child, td:first-child { text-align: left; }
+    .tabela { overflow-x: auto; }
+    .nota { color: var(--texto-3); font-size: 12px; margin-top: 18px; }
+    @media (max-width: 760px) { .grade { grid-template-columns: 1fr; } .barra { grid-template-columns: 100px 1fr 40px; } }
+</style>
+</head>
+<body>
+<main>
+
+<section class="entrar" id="entrar" hidden>
+    <h2>Painel do Kaizen</h2>
+    <p>Digite a chave do painel. Ela fica guardada só neste navegador.</p>
+    <form id="form-chave">
+        <input id="chave" type="password" autocomplete="current-password" placeholder="Chave do painel" required>
+        <p class="erro" id="erro" role="alert"></p>
+        <button class="botao" type="submit">Entrar</button>
+    </form>
+</section>
+
+<div id="painel" hidden>
+    <header>
+        <h1><span>改</span> Painel do Kaizen</h1>
+        <div>
+            <span class="atualizado" id="atualizado"></span>
+            <button class="botao" id="recarregar" type="button">Atualizar</button>
+            <button class="botao" id="sair" type="button">Sair</button>
+        </div>
+    </header>
+
+    <div class="tiles" id="tiles"></div>
+
+    <div class="grade">
+        <section class="bloco largo">
+            <h2>Pessoas que abriram o app, por dia</h2>
+            <p>Por dia (60 dias no computador, 30 no celular) · cada aparelho conta uma vez por dia</p>
+            <div class="legenda" id="legenda-ativos"></div>
+            <div class="grafico" id="g-ativos"></div>
+        </section>
+        <section class="bloco largo">
+            <h2>Visitas ao site, por dia</h2>
+            <p>Por dia · uma por sessão</p>
+            <div class="grafico" id="g-visitas"></div>
+        </section>
+        <section class="bloco"><h2>De onde vêm as visitas</h2><p>Últimos 30 dias</p><div class="barras" id="b-origens"></div></section>
+        <section class="bloco"><h2>O que fizeram no site</h2><p>Últimos 30 dias</p><div class="barras" id="b-site"></div></section>
+        <section class="bloco"><h2>Funções mais usadas no app</h2><p>Últimos 30 dias</p><div class="barras" id="b-funcoes"></div></section>
+        <section class="bloco"><h2>Versões em uso</h2><p>Aberturas nos últimos 7 dias</p><div class="barras" id="b-versoes"></div></section>
+        <section class="bloco largo"><h2>Downloads dos instaladores</h2><p>Total por versão, direto do GitHub</p><div class="barras" id="b-downloads"></div></section>
+    </div>
+
+    <details>
+        <summary>Ver os números dia a dia (tabela)</summary>
+        <div class="tabela" id="tabela"></div>
+    </details>
+
+    <p class="nota">Contagem anônima: o app manda só "abri hoje", o tipo de aparelho e a versão, e de vez em quando
+        quantas vezes cada função foi usada. "Esta semana" e "este mês" somam o primeiro dia de cada aparelho na
+        semana ou no mês, sem nenhum identificador. Quem desliga em Privacidade não aparece aqui.</p>
+</div>
+
+<div class="dica" id="dica"></div>
+
+</main>
+
+<script src="painel.js"></script>
+</body>
+</html>
