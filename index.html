@@ -162,9 +162,7 @@
             <h3>Um assistente que conhece seu quadro</h3>
             <p>Pergunte por onde começar, peça pra quebrar uma tarefa grande ou tire uma dúvida do estudo. A resposta vem formatada, direto ao ponto.</p>
             <ul class="lista-check">
-                <li>IA no seu computador, em outro PC da sua rede ou na nuvem</li>
-                <li>Funciona com Ollama, OpenRouter (grátis), Claude, ChatGPT e Gemini</li>
-                <li>Já assina? Usa o <b>Claude Code</b>, o <b>Gemini CLI</b> ou o <b>Codex</b> com o seu login</li>
+                <li>IA no seu computador, de graça na nuvem ou pela sua assinatura</li>
                 <li>Você escolhe o modelo e onde ele roda</li>
             </ul>
         </div>
@@ -201,10 +199,8 @@
             <h3>Pets de estudo (se você quiser)</h3>
             <p>Cada plano vira um bichinho. Estudou no dia, ele fica feliz; deixou a sessão pra trás, ele fica tristinho até você recuperar. Enquanto a IA monta o plano, você adota o seu.</p>
             <ul class="lista-check">
-                <li>24 bichos, 15 tons de pelo, 13 cenários e mais de 80 roupinhas e acessórios</li>
-                <li>Status do pet: atrasou a sessão e o gatinho chora no banho; estudou e ele gira igual o gato do “oiia”</li>
-                <li>Pontos por item feito, sessão completa e plano concluído</li>
-                <li>Plano terminado, o pet vai pro jardim guardando tudo o que vocês estudaram, e pode voltar pra aprender mais</li>
+                <li>24 bichos, mais de 80 roupinhas e acessórios, comprados com os pontos do estudo</li>
+                <li>A ficha do pet guarda tudo o que vocês estudaram, com as notas das atividades</li>
             </ul>
         </div>
         <button class="recurso-tela ampliar" type="button" data-ampliar="img/telas/pets.webp" data-video="img/videos/pets.mp4" aria-label="Ampliar imagem dos pets">
@@ -232,22 +228,31 @@
         </button>
     </article>
 
-    <article class="recurso">
-        <div class="recurso-texto">
-            <span class="recurso-num">07</span>
-            <h3>Uma biblioteca com tudo o que você estudou</h3>
-            <p>Cada plano vira um livro na estante. Abrindo o livro, está tudo lá: o que você estudou em cada dia, as atividades entregues com nota, a média e os pontos pra reforçar. Plano concluído ganha selo dourado.</p>
-            <ul class="lista-check">
-                <li>Capa personalizada: couro, jeans, mármore, pixel retrô, galáxia, folha de ouro…</li>
-                <li>Cantoneiras, título gravado em ouro, fitilho e adesivos, com os mesmos pontos dos pets</li>
-                <li>Funciona com ou sem os pets</li>
-            </ul>
+    <div class="novos">
+        <h3 class="novos-titulo">E mais</h3>
+        <div class="cartoes">
+            <div class="cartao">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3 2.2-5 5-5s5 2 5 5M13.5 20c.2-2.4 1.6-4 3.5-4s3.4 1.6 3.5 4"/></svg>
+                <h3>Estude com a turma</h3>
+                <p>Mande seu plano por link ou QR Code. Quem abre ganha uma cópia com vídeos, atividades e flashcards, sem o seu progresso.</p>
+            </div>
+            <div class="cartao">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                <h3>Na agenda do celular</h3>
+                <p>As sessões vão pro Google Agenda, pro iPhone ou pro Outlook, e o celular avisa antes de cada uma.</p>
+            </div>
+            <div class="cartao">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+                <h3>Resumo da semana</h3>
+                <p>Todo domingo: o que você estudou, suas notas e o que fazer na próxima semana.</p>
+            </div>
+            <div class="cartao">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5l-3 6M12 15l3 6"/></svg>
+                <h3>Acessível</h3>
+                <p>Texto maior, alto contraste, menos movimento, texto espaçado e leitura em voz alta.</p>
+            </div>
         </div>
-        <button class="recurso-tela ampliar" type="button" data-ampliar="img/telas/biblioteca.webp" aria-label="Ampliar imagem da Biblioteca">
-            <img src="img/telas/biblioteca.webp" width="2880" height="1800" loading="lazy"
-                 alt="Livro de capa de couro com cantoneiras douradas e troféu, com o histórico das sessões e as notas das atividades.">
-        </button>
-    </article>
+    </div>
 </section>
 
 <!-- =========================== COMO FUNCIONA =========================== -->
@@ -344,7 +349,7 @@
         </div>
     </div>
 
-    <p class="cenas-dica">Aperte <kbd>Z</kbd> no app pra ver a cena inteira. Parado por 3 minutos, ele vira descanso de tela.</p>
+    <p class="cenas-dica">Aperte <kbd>Z</kbd> no app pra ver a cena inteira.</p>
 </section>
 
 <!-- =========================== CELULAR =========================== -->
@@ -361,7 +366,6 @@
                 <li>Criptografado no aparelho antes de sair: o servidor só guarda texto embaralhado</li>
                 <li>Sem conta e sem senha</li>
                 <li>Se os dois mudarem offline, o Kaizen pergunta com qual versão ficar</li>
-                <li>Cabem centenas de atividades entregues, com os arquivos junto</li>
             </ul>
         </div>
 
@@ -534,6 +538,8 @@
         </div>
     </div>
 
+    <details class="tabela-detalhe">
+    <summary>Ver os modelos que testamos</summary>
     <div class="tabela-rolar">
         <table class="tabela">
             <caption>Modelos testados montando o mesmo plano (React, 12 sessões de 1 h)</caption>
@@ -550,12 +556,9 @@
             </tbody>
         </table>
     </div>
+    </details>
 
     <div class="dicas">
-        <div class="dica">
-            <h3>Pro chat, use o <code>qwen3:4b-instruct</code></h3>
-            <p>Responde em ~2 s. O <code>qwen3:4b</code> comum “pensa em voz alta” antes de responder: ótimo pros planos, lento pra conversa.</p>
-        </div>
         <div class="dica">
             <h3>Sem placa de vídeo? Sem problema</h3>
             <p>Use a IA de outro computador seu pela rede (Tailscale ou VPN), ou o <a href="https://openrouter.ai" target="_blank" rel="noopener">OpenRouter</a>, que tem modelos grátis e é o jeito recomendado de usar sem pagar nada.</p>
@@ -619,7 +622,7 @@
         </details>
         <details>
             <summary>Meus dados vão pra algum servidor?</summary>
-            <p>Não, a menos que você ligue a sincronia. Nesse caso, os dados são criptografados no seu aparelho com uma chave tirada do código, e o servidor guarda só o texto cifrado. Quem tiver o código vê os dados, então não mostre pra ninguém. As chaves de IA nunca sincronizam.</p>
+            <p>Não, a menos que você ligue a sincronia ou compartilhe um plano. Nos dois casos, tudo é criptografado no seu aparelho e o servidor guarda só texto cifrado: quem tem o código (ou o link) vê os dados, então só mande pra quem você quiser. As chaves de IA nunca sincronizam.</p>
         </details>
         <details>
             <summary>Meu computador é fraco. Vai rodar?</summary>
