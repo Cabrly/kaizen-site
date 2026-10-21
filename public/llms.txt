@@ -1,0 +1,55 @@
+# Kaizen
+
+> Kaizen (改善, "melhoria contínua") é um app grátis de tarefas e estudos. Junta um quadro kanban com um assistente de estudos: a pessoa diz o que quer aprender e a IA monta a rotina no calendário, com vídeo, documentação oficial e atividade prática pra cada dia. Roda no computador (Windows, Mac e Linux), no navegador e no celular, sem conta e sem cartão. Feito por Vitor Cabral (Cabrly), código aberto no GitHub.
+
+Este arquivo resume o site %SITE_URL%/ para assistentes de IA e ferramentas de busca. O site e o app estão em português do Brasil.
+
+## O que o Kaizen faz
+
+- Kanban de tarefas: colunas A fazer, Em andamento, Em revisão e Concluído. Categorias, prioridade, prazo, busca, filtros, barra de progresso e backup em arquivo com um clique.
+- Plano de estudos montado pela IA: a pessoa escreve o assunto (ex.: "quero aprender React"), responde três perguntas rápidas (nível, objetivo e base), escolhe os dias da semana, o tempo por dia e por quantas semanas, e em cerca de um minuto o calendário está pronto. Cada sessão traz vídeo, documentação oficial e atividade prática. Materiais em português, inglês ou espanhol. Item não feito passa pra próxima sessão.
+- A IA nunca inventa link: ela só monta o roteiro (tópicos, ordem, objetivos e atividades). Quem busca os materiais é o próprio Kaizen: vídeos do YouTube que cabem no tempo da sessão e a página certa da documentação oficial. As datas são calculadas pelo código.
+- Assistente que conhece o quadro: diz por onde começar, quebra tarefas grandes e tira dúvidas do estudo.
+- Flashcards prontos ao marcar uma sessão como feita, com revisão espaçada. A IA recebe um resumo do progresso e explica a partir do que a pessoa já sabe.
+- Entrega de atividades com correção: resposta escrita, arquivos de código ou link de repositório público do GitHub. Com uma IA forte conectada (Claude Code, Gemini, ChatGPT ou modelos grandes do OpenRouter), dá nota de 0 a 10, aponta erros com a linha e sugere como melhorar.
+- Pets de estudo (opcional): cada plano vira um bichinho que fica feliz quando a pessoa estuda. 24 bichos e mais de 80 roupinhas e acessórios, comprados com os pontos do estudo.
+- Cenas de fundo que ganham vida conforme as tarefas são concluídas (pagode lofi, Fuji ao amanhecer, ensō dourado, ameixeira ao luar, bambuzal, montanhas ao pôr do sol).
+- Estudo em turma: o plano é compartilhado por link ou QR Code, sem o progresso de quem mandou.
+- Sessões no Google Agenda, no iPhone ou no Outlook, com aviso antes de cada uma. Resumo da semana todo domingo.
+- Acessibilidade: texto maior, alto contraste, menos movimento, texto espaçado e leitura em voz alta.
+
+## Onde a IA roda
+
+- Grátis na nuvem, com o OpenRouter: funciona em qualquer aparelho, inclusive no celular. Conta em 2 minutos, sem cartão. O Kaizen usa só os modelos grátis.
+- Grátis no computador, com o Ollama: a IA roda na placa de vídeo e nada sai do computador. O app confere o hardware, recomenda o modelo e instala tudo num clique.
+- Pela assinatura que a pessoa já tem: Claude Code, Gemini CLI ou Codex, com login no terminal e sem chave de API (no app de computador).
+- Chave de API do Claude, do ChatGPT ou do Gemini, pagando só o que usar.
+
+## Que computador precisa (IA local)
+
+O app em si é leve. O que pesa é a IA local, e o que manda é a memória da placa de vídeo (VRAM).
+
+- PC simples (sem placa boa, 8 GB de RAM): llama3.2:3b ou qwen3:1.7b. Funciona, mais devagar. Recomendado usar o OpenRouter.
+- Mínimo (6 GB de VRAM, 8 GB de RAM): qwen3:4b. GTX 1660, RTX 2060, RTX 3050. Plano de 12 sessões em cerca de 45 s.
+- Ideal (12 GB de VRAM, 16 GB de RAM): qwen3:8b. RTX 3060 12 GB, RTX 4070.
+- Mac (M1 ou mais novo, 16 GB): qwen3:8b.
+
+## Privacidade
+
+O Kaizen é local-first: tarefas e planos ficam num arquivo na pasta do usuário, e atualizar ou reinstalar não apaga nada. Não existe conta. A sincronia entre PC e celular usa um código gerado no PC; os dados são criptografados no aparelho e o servidor guarda só texto cifrado. As chaves de IA nunca sincronizam. O app conta de forma anônima quantas pessoas usam (só "abri hoje", o tipo de aparelho e a versão), e dá pra desligar no botão Privacidade.
+
+## Baixar
+
+- [Página de download](%SITE_URL%/#baixar): Windows 10 e 11 (.exe), Mac com Apple Silicon (.dmg), Linux (.deb, AppImage e .rpm).
+- [Última versão no GitHub](https://github.com/Cabrly/kaizen/releases/latest)
+- [Usar no navegador ou no celular](https://cabrly.github.io/kaizen/): abra e adicione à tela de início; vira um app que abre até sem internet.
+- [Demonstração com dados de exemplo](https://cabrly.github.io/kaizen/?demo)
+
+No Windows, o aviso "O Windows protegeu o computador" aparece porque o app ainda não tem certificado de assinatura; basta clicar em "Mais informações" e "Executar assim mesmo". O app se atualiza sozinho, com pacote assinado.
+
+## Links
+
+- [Site](%SITE_URL%/)
+- [Código no GitHub](https://github.com/Cabrly/kaizen)
+- [Reportar problema](https://github.com/Cabrly/kaizen/issues)
+- [Autor: Cabrly](https://github.com/Cabrly)
