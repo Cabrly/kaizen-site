@@ -1,16 +1,15 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { APP, ARQUIVOS, NOMES, arquivo, so } from "../download.js";
+import { APP, ARQUIVOS, NOMES, arquivo } from "../lib/download.js";
 
 /* O app é desenhado com 1280 px de largura e encolhido pra caber na janela, então fica
    igual ao print. Abaixo de 640 px ficaria pequeno demais pra usar: aí fica o print com
    um botão que abre a demo em outra aba. */
 const LARGURA_APP = 1280;
 const LARGURA_MINIMA = 640;
-// ?demo-url=... no endereço do site troca a demo (pra testar uma cópia local do app)
-const URL_DEMO = new URLSearchParams(location.search).get("demo-url") || `${APP}?demo`;
+const DEMO = `${APP}?demo`;
 
 /** Botão principal: aponta direto pro instalador do sistema do visitante quando dá. */
-function BotaoBaixar({ versao }) {
+function BotaoBaixar({ versao, so }) {
     let href = "#baixar";
     let rotulo = "Baixar o Kaizen";
     if (so === "celular") {
@@ -35,6 +34,7 @@ function Demo() {
     const [ligada, setLigada] = useState(false);   // uma vez carregada, fica
     const [pronta, setPronta] = useState(false);
     const [rodada, setRodada] = useState(0);       // mudar a key recria o iframe: a demo volta ao começo
+    const [urlDemo, setUrlDemo] = useState(DEMO);
 
     function encaixar() {
         const tela = telaRef.current, quadro = quadroRef.current;
@@ -46,6 +46,10 @@ function Demo() {
     }
 
     useLayoutEffect(() => {
+        // ?demo-url=... no endereço do site troca a demo (pra testar uma cópia local do app)
+        const outra = new URLSearchParams(location.search).get("demo-url");
+        if (outra) setUrlDemo(outra);
+
         const tela = telaRef.current;
         const medir = () => {
             if (tela.clientWidth >= LARGURA_MINIMA) setLigada(true);
@@ -69,14 +73,14 @@ function Demo() {
                     <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
                     <span className="janela-endereco">cabrly.github.io/kaizen</span>
                     <button className="janela-botao" type="button" data-demo-zerar title="Voltar a demonstração ao começo" onClick={recomecar}>↺ Recomeçar</button>
-                    <a className="janela-botao" href={URL_DEMO} target="_blank" rel="noopener">Tela cheia ↗</a>
+                    <a className="janela-botao" href={urlDemo} target="_blank" rel="noopener">Tela cheia ↗</a>
                 </div>
                 <div className="janela-tela" ref={telaRef}>
                     <img src="img/telas/kanban.webp" width="2880" height="1800" fetchPriority="high"
                          alt="Quadro kanban do Kaizen com as colunas A fazer, Em andamento, Em revisão e Concluído, sobre a cena do pagode à noite." />
-                    <a className="demo-abrir-celular botao" href={URL_DEMO} target="_blank" rel="noopener">Experimentar a demonstração</a>
+                    <a className="demo-abrir-celular botao" href={urlDemo} target="_blank" rel="noopener">Experimentar a demonstração</a>
                     {ligada && (
-                        <iframe key={rodada} title="Demonstração interativa do Kaizen" src={URL_DEMO}
+                        <iframe key={rodada} title="Demonstração interativa do Kaizen" src={urlDemo}
                                 className={pronta ? "pronto" : undefined}
                                 ref={(quadro) => { quadroRef.current = quadro; encaixar(); }}
                                 onLoad={() => setTimeout(() => setPronta(true), 400)} />
@@ -87,7 +91,7 @@ function Demo() {
     );
 }
 
-export default function Heroi({ versao }) {
+export default function Heroi({ versao, so }) {
     return (
         <section className="heroi">
             <div className="heroi-fundo" aria-hidden="true"></div>
@@ -106,7 +110,7 @@ export default function Heroi({ versao }) {
                 </p>
 
                 <div className="heroi-acoes">
-                    <BotaoBaixar versao={versao} />
+                    <BotaoBaixar versao={versao} so={so} />
                     <a className="botao botao-vazado" href={APP} target="_blank" rel="noopener">
                         Usar no navegador
                     </a>

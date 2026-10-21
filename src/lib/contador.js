@@ -3,7 +3,7 @@
    cliques em baixar, abrir no navegador e mexer na demonstração. Sem cookie e sem
    nenhum identificador. */
 
-import { so } from "./download.js";
+import { sistemaDoVisitante } from "./download.js";
 
 const CONTADOR = "https://kaizen-sync.kaizen-sync.workers.dev/v1/visita";
 const contados = new Set();
@@ -33,6 +33,7 @@ function origemDaVisita() {
 }
 
 export function iniciarContador() {
+    const so = sistemaDoVisitante();
     try {
         if (!sessionStorage.getItem("kaizen-site.visita")) {
             sessionStorage.setItem("kaizen-site.visita", "1");

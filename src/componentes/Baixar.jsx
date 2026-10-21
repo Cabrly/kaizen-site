@@ -1,7 +1,7 @@
-import { APP, ARQUIVOS, PAGINA_VERSOES, arquivo, so } from "../download.js";
+import { APP, ARQUIVOS, PAGINA_VERSOES, arquivo } from "../lib/download.js";
 
 /** Cartões de download; o do sistema do visitante fica em destaque. */
-export default function Baixar({ versao }) {
+export default function Baixar({ versao, so }) {
     const link = (fim) => arquivo(versao, fim) || PAGINA_VERSOES;
     const destaque = (qual) => (so === qual ? "sistema seu-sistema" : "sistema");
 

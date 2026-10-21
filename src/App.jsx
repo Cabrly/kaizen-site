@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { useUltimaVersao } from "./download.js";
-import { calmo, gsap, ScrollTrigger, useGSAP } from "./movimento.js";
+import { useSistema, useUltimaVersao } from "./lib/download.js";
+import { calmo, gsap, ScrollTrigger, useGSAP } from "./lib/movimento.js";
 import Topo from "./componentes/Topo.jsx";
 import Heroi from "./componentes/Heroi.jsx";
 import Recursos from "./componentes/Recursos.jsx";
@@ -67,6 +67,7 @@ function useAnimacoes(pagina) {
 export default function App() {
     const pagina = useRef(null);
     const versao = useUltimaVersao();
+    const so = useSistema();
     const [ampliado, setAmpliado] = useState(null);
     useAnimacoes(pagina);
 
@@ -76,7 +77,7 @@ export default function App() {
             <Topo />
 
             <main id="conteudo">
-                <Heroi versao={versao} />
+                <Heroi versao={versao} so={so} />
                 <Faixa />
                 <Recursos ampliar={setAmpliado} />
                 <ComoFunciona />
@@ -95,7 +96,7 @@ export default function App() {
                 <Privacidade />
                 <SuaIa />
                 <Requisitos />
-                <Baixar versao={versao} />
+                <Baixar versao={versao} so={so} />
                 <Faq />
                 <Apoie />
                 <Final />

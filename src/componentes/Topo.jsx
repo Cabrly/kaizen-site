@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MENU } from "../conteudo.jsx";
 
 export function Marca() {
     return (
@@ -9,8 +10,6 @@ export function Marca() {
     );
 }
 
-const MENU = [["#recursos", "Recursos"], ["#como-funciona", "Como funciona"], ["#sua-ia", "Sua IA"],
-              ["#requisitos", "Requisitos"], ["#perguntas", "Perguntas"], ["#apoie", "Apoie"]];
 
 /** Barra fixa: transparente sobre o herói, sólida depois de rolar; no celular vira menu de abrir. */
 export default function Topo() {

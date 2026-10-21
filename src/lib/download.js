@@ -8,7 +8,8 @@ export const REPO = "Cabrly/kaizen";
 export const PAGINA_VERSOES = `https://github.com/${REPO}/releases/latest`;
 export const APP = "https://cabrly.github.io/kaizen/";
 
-function sistemaDoVisitante() {
+/** "windows", "mac", "linux", "celular" ou null. Só no navegador. */
+export function sistemaDoVisitante() {
     const ua = navigator.userAgent;
     if (/Android|iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return "celular";
     if (/Windows/i.test(ua)) return "windows";
@@ -17,7 +18,16 @@ function sistemaDoVisitante() {
     return null;
 }
 
-export const so = sistemaDoVisitante();
+/**
+ * O sistema do visitante, depois de a página montar. No pré-render (e no primeiro quadro)
+ * é null: o HTML gerado no build serve pra qualquer sistema, e o React troca depois.
+ */
+export function useSistema() {
+    const [so, setSo] = useState(null);
+    useEffect(() => setSo(sistemaDoVisitante()), []);
+    return so;
+}
+
 export const NOMES = { windows: "Windows", mac: "Mac", linux: "Linux" };
 // fim do nome do instalador principal de cada sistema
 export const ARQUIVOS = { windows: "x64-setup.exe", mac: "aarch64.dmg", linux: "amd64.deb" };

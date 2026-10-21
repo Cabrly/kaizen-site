@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { calmo, gsap, lenis } from "../movimento.js";
+import { calmo, gsap, lenis } from "../lib/movimento.js";
 
 /** Amplia a tela de um recurso num <dialog>: o vídeo grande quando o recurso tem, senão a imagem. */
 export default function Lupa({ item, fechar }) {

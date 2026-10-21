@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { brCode } from "../pix.js";
+import { brCode } from "../lib/pix.js";
 
 /* Pra trocar a chave Pix, edite só estes três campos.
    Nome: até 25 letras; cidade: até 15 (sem acento é mais seguro). Sem chave, mostra "em breve". */
@@ -30,7 +30,7 @@ export default function Apoie() {
     // a biblioteca de QR Code é pesada (~60 kB) e só serve aqui embaixo: vem num arquivo à parte, depois da página
     useEffect(() => {
         if (!codigo) return;
-        import("../vendor/qrcode.js").then(({ default: qrcode }) => {
+        import("../lib/vendor/qrcode.js").then(({ default: qrcode }) => {
             const qr = qrcode(0, "M");
             qr.addData(codigo);
             qr.make();

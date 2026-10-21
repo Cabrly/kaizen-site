@@ -1,17 +1,16 @@
 /* Seções só de conteúdo: texto e imagem, sem estado. */
 
-import { APP } from "../download.js";
+import { DESTAQUES, MODELOS, NIVEIS, PRIVACIDADE } from "../conteudo.jsx";
+import { APP } from "../lib/download.js";
 import { Cartoes } from "./Recursos.jsx";
 import { Marca } from "./Topo.jsx";
 
 const fora = { target: "_blank", rel: "noopener" };
 
 export function Faixa() {
-    const itens = [["100% grátis", "sem plano pago, sem anúncio"], ["IA no seu PC", "modelos leves do Ollama"],
-                   ["Seus dados ficam com você", "nada vai pra servidor nosso"], ["PC e celular", "sincronia criptografada"]];
     return (
         <section className="faixa" aria-label="Destaques">
-            <ul>{itens.map(([forte, fraco]) => <li key={forte}><strong>{forte}</strong><span>{fraco}</span></li>)}</ul>
+            <ul>{DESTAQUES.map(([forte, fraco]) => <li key={forte}><strong>{forte}</strong><span>{fraco}</span></li>)}</ul>
         </section>
     );
 }
@@ -83,16 +82,6 @@ export function Celular() {
     );
 }
 
-const PRIVACIDADE = [
-    { titulo: "IA no seu PC", texto: "Com o Ollama, o modelo roda na sua placa de vídeo. Nenhuma conversa sai do computador.",
-      icone: <><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></> },
-    { titulo: "Dados na sua pasta", texto: "Tarefas e planos ficam num arquivo na pasta do usuário. Atualizar ou reinstalar não apaga nada.",
-      icone: <><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></> },
-    { titulo: "IA em um clique", texto: "O app confere memória e placa de vídeo, recomenda o modelo certo e instala tudo sozinho, sem terminal.",
-      icone: <><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></> },
-    { titulo: "Atualiza sozinho", texto: "Saiu versão nova? O app avisa ao abrir e se atualiza num clique, com pacote assinado.",
-      icone: <><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></> }
-];
 
 export function Privacidade() {
     return (
@@ -201,25 +190,7 @@ export function SuaIa() {
     );
 }
 
-const NIVEIS = [
-    { nome: "PC simples", placa: "Sem placa boa · 8 GB de RAM", modelo: <><code>llama3.2:3b</code> ou <code>qwen3:1.7b</code></>,
-      obs: "Funciona, mais devagar e com planos mais simples. Dica: use a IA grátis na nuvem (OpenRouter)." },
-    { nome: "Mínimo", placa: "6 GB de VRAM · 8 GB de RAM", modelo: <code>qwen3:4b</code>,
-      obs: "GTX 1660, RTX 2060, RTX 3050. Plano de 12 sessões em ~45 s." },
-    { nome: "Ideal", placa: "12 GB de VRAM · 16 GB de RAM", modelo: <code>qwen3:8b</code>, recomendado: true,
-      obs: "RTX 3060 12 GB, RTX 4070. Melhor equilíbrio entre qualidade e velocidade." },
-    { nome: "Mac", placa: "M1 ou mais novo · 16 GB", modelo: <code>qwen3:8b</code>,
-      obs: "A memória é compartilhada entre CPU e GPU, então roda bem." }
-];
 
-const MODELOS = [
-    ["qwen3:8b", "5,2 GB", true, "Recomendado", "~65 s, melhor qualidade"],
-    ["qwen3:4b", "2,5 GB", true, "Ótimo", "~45 s, bom pra placa de 6 GB"],
-    ["llama3.2:3b", "2,0 GB", true, "Bom", "12 sessões coerentes, com mini projeto"],
-    ["qwen3:1.7b", "1,4 GB", true, "Bom", "progressão boa, roda em PC simples"],
-    ["gemma3:1b", "0,8 GB", false, "Não serve", "quebra o formato da resposta"],
-    ["qwen2.5:3b", "1,9 GB", false, "Não serve", "entra em loop"]
-];
 
 export function Requisitos() {
     return (

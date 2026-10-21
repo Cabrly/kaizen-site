@@ -1,20 +1,7 @@
 import { useRef, useState } from "react";
-import { calmo, gsap, useGSAP } from "../movimento.js";
+import { CENAS } from "../conteudo.jsx";
+import { calmo, gsap, useGSAP } from "../lib/movimento.js";
 
-const CENAS = [
-    { id: "pagode-lofi", nome: "Pagode lofi", cada: "janelas e lanternas do pagode acendem", fim: "tudo aceso; estrelas cadentes e pétalas o tempo todo",
-      alt: "Cena Pagode lofi: pagode vermelho iluminado, monte Fuji e cerejeiras sob o céu estrelado." },
-    { id: "fuji", nome: "Fuji ao amanhecer", cada: "o cordão de lanternas sobe a trilha e o céu doura", fim: "o sol nasce sobre o mar de nuvens",
-      alt: "Cena Fuji ao amanhecer: o monte nevado acima de um mar de nuvens, com bordo vermelho em primeiro plano." },
-    { id: "enso", nome: "Ensō dourado", cada: "o pincel de ouro avança no círculo zen", fim: "o círculo se fecha e o selo é carimbado",
-      alt: "Cena Ensō dourado: círculo zen pintado a pincel sobre papel claro." },
-    { id: "ume", nome: "Ameixeira ao luar", cada: "flores vermelhas abrem no galho com neve", fim: "florada e pétalas no ar",
-      alt: "Cena Ameixeira ao luar: galho com neve e flores vermelhas diante da lua cheia." },
-    { id: "bambu", nome: "Bambuzal", cada: "mais vaga-lumes acendem", fim: "a lanterna de pedra brilha forte",
-      alt: "Cena Bambuzal com vaga-lumes: bambus altos à noite e uma lanterna de pedra." },
-    { id: "sansui", nome: "Montanhas ao pôr do sol", cada: "a paisagem é pintada em aguada", fim: "o sol pousa na crista e doura o lago",
-      alt: "Cena Montanhas ao pôr do sol: montanhas em aguada com o sol vermelho." }
-];
 
 const imagemDa = (cena) => `img/cenas/${cena.id}.webp`;
 
