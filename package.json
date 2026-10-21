@@ -4,7 +4,7 @@
   "description": "Página de divulgação do Kaizen, em React + Vite com animações GSAP.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "repository": {

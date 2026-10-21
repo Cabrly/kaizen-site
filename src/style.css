@@ -170,6 +170,16 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 .heroi h1 .linha { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
 .heroi h1 .linha > * { display: inline-block; }
 
+/* Com JS e movimento liberados (classe js-motion, posta no <head>), o que a abertura anima já
+   começa escondido: o HTML pré-renderizado não aparece pronto e some antes da animação.
+   Se o JavaScript não carregar, tudo aparece sozinho em 4 s. */
+.js-motion .heroi h1 .linha > * { transform: translateY(110%); }
+.js-motion :is(.heroi .sobretitulo, .heroi-sub, .heroi-acoes, .heroi-nota, .heroi-tela) { opacity: 0; }
+.js-motion :is(.heroi h1 .linha > *, .heroi .sobretitulo, .heroi-sub, .heroi-acoes, .heroi-nota, .heroi-tela) {
+    animation: aparecer-sem-js 0s 4s forwards;
+}
+@keyframes aparecer-sem-js { to { opacity: 1; transform: none; } }
+
 .heroi-sub {
     max-width: 640px; margin: 24px auto 0;
     font-size: clamp(17px, 2vw, 20px); line-height: 1.6; color: rgba(255, 255, 255, .86);

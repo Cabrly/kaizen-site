@@ -3,3 +3,4 @@ legacy
 node_modules/
 dist/
 .gstack/
+dist-server/

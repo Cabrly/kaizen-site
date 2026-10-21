@@ -25,10 +25,11 @@ function useAnimacoes(pagina) {
         if (calmo) return;
 
         // abertura: o título sobe de dentro das máscaras, o resto vem atrás, a janela do app por último
+        // fromTo (e não from): o CSS já deixa essas peças escondidas antes do JS (classe js-motion)
         gsap.timeline({ defaults: { ease: "power4.out", duration: 1.1 } })
-            .from(".heroi h1 .linha > *", { yPercent: 110, stagger: 0.12 })
-            .from([".heroi .sobretitulo", ".heroi-sub", ".heroi-acoes", ".heroi-nota"], { y: 24, autoAlpha: 0, stagger: 0.08, duration: 0.9 }, 0.15)
-            .from(".heroi-tela", { y: 90, autoAlpha: 0, duration: 1.4 }, 0.35);
+            .fromTo(".heroi h1 .linha > *", { y: 0, yPercent: 110 }, { y: 0, yPercent: 0, stagger: 0.12 })
+            .fromTo([".heroi .sobretitulo", ".heroi-sub", ".heroi-acoes", ".heroi-nota"], { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.08, duration: 0.9 }, 0.15)
+            .fromTo(".heroi-tela", { y: 90, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.4 }, 0.35);
 
         // o fundo do herói desce mais devagar que a página (profundidade)
         gsap.to(".heroi-fundo", { yPercent: 22, ease: "none", scrollTrigger: { trigger: ".heroi", start: "top top", end: "bottom top", scrub: true } });
