@@ -32,6 +32,8 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+/* com o Lenis ligado, quem rola suave é ele (e já desconta o topo fixo) */
+html.lenis { scroll-behavior: auto; }
 
 body {
     margin: 0;
@@ -142,7 +144,7 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
     position: absolute; inset: 0 0 18%; z-index: -1;
     background:
         linear-gradient(180deg, rgba(22, 19, 31, .55) 0%, rgba(22, 19, 31, .35) 45%, var(--noite) 100%),
-        url("img/cenas/pagode-lofi.webp") center 70% / cover no-repeat;
+        url("/img/cenas/pagode-lofi.webp") center 70% / cover no-repeat;
 }
 .heroi::after {
     /* a parte de baixo do herói vira papel, e a tela fica "metade dentro, metade fora" */
@@ -164,6 +166,9 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
     letter-spacing: -.02em;
 }
 .heroi h1 em { font-style: normal; color: #ff5a6a; }
+/* cada linha do título é uma máscara: na abertura o texto sobe de dentro dela */
+.heroi h1 .linha { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+.heroi h1 .linha > * { display: inline-block; }
 
 .heroi-sub {
     max-width: 640px; margin: 24px auto 0;
@@ -490,6 +495,7 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 }
 .faq details[open] summary::after { transform: rotate(-135deg); margin-top: -3px; }
 .faq details p { padding: 0 48px 26px 0; color: var(--tinta-2); }
+.faq-corpo { overflow: hidden; }   /* a resposta desliza ao abrir e fechar */
 
 
 /* ---------------- apoie (Pix) ---------------- */
@@ -640,12 +646,6 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 }
 
 
-/* ---------------- surgir ao rolar ---------------- */
-
-.surge { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-.surge.visivel { opacity: 1; transform: none; }
-
-
 /* ---------------- telas menores ---------------- */
 
 @media (max-width: 1080px) {
@@ -715,7 +715,6 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; animation: none !important; }
-    .surge { opacity: 1; transform: none; }
 }
 
 /* crédito da arte dos pets */
