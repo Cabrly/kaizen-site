@@ -8,9 +8,10 @@ suave usa Lenis 1.
 1. **Só `transform` e `opacity`.** São as duas propriedades que o navegador anima sem
    recalcular o layout, o que mantém 60 quadros por segundo e o INP baixo. A única exceção
    é a altura da resposta do FAQ, que dura menos de meio segundo e só roda quando a pessoa
-   clica.
+   clica. (`rotate`, `scale`, `x`, `y`, `xPercent`, `yPercent` e `scaleX` do GSAP viram
+   `transform`.)
 2. **Menos movimento é respeitado.** Com `prefers-reduced-motion: reduce`, o `calmo` de
-   `src/movimento.js` fica `true`: nenhuma animação é criada, o Lenis não existe e a
+   `src/lib/movimento.js` fica `true`: nenhuma animação é criada, o Lenis não existe e a
    rolagem é a nativa. O CSS também zera `transition` e `animation` nesse caso.
 3. **Nada fica sem foco.** O surgir ao rolar parte de `opacity: 0`, não de
    `visibility: hidden`. Quem navega pelo teclado alcança tudo, mesmo o que ainda não
@@ -21,15 +22,21 @@ suave usa Lenis 1.
    apaga o estilo inline. Assim os `:hover` do CSS que levantam cartões e telas continuam
    funcionando.
 
+6. **Nada pisca pronto antes de animar.** A página chega pré-renderizada. Um script no
+   `<head>`, antes da primeira pintura, põe a classe `js-motion` no `<html>` (só se o
+   movimento estiver liberado), e o CSS esconde apenas o que a abertura anima. Se o
+   JavaScript não carregar, uma animação CSS mostra tudo em 4 s. Por isso a abertura usa
+   `fromTo` (com início e fim explícitos), nunca `from`.
+
 ## Rolagem suave (Lenis)
 
-`src/movimento.js`
+`src/lib/movimento.js`, ligada por `iniciarRolagem()` no `main.jsx`.
 
 | Ajuste | Valor | Efeito |
 |---|---|---|
 | `autoRaf: false` + `gsap.ticker` | — | o Lenis anda no mesmo relógio do GSAP, sem tremer |
-| `anchors.offset` | `-84` | links `#secao` param 84 px antes, abaixo do topo fixo |
 | `gsap.ticker.lagSmoothing(0)` | — | o GSAP não "pula" quadros depois de um travamento, então a rolagem não dá tranco |
+| `rolarAte(alvo)` | 1,2 s | salto dos links `#secao`, parando abaixo do topo fixo (`scroll-padding-top: 84px` no CSS) |
 
 Enquanto a lupa está aberta, `lenis.stop()` trava a página de trás. `lenis.start()`
 destrava ao fechar.
@@ -48,6 +55,9 @@ Curva: `power4.out`, que começa rápido e assenta devagar. A máscara de cada l
 `<span class="linha">`, com `overflow: hidden` no CSS. O `padding-bottom` de 0,1 em evita
 cortar o "p" e o "g".
 
+As linhas zeram `y` e `yPercent` juntos: o GSAP lê o `translateY(110%)` que o CSS aplica antes
+do JS como `y` em pixels, e sem zerar os dois a linha ficaria parada 110% abaixo.
+
 ## Ligadas à rolagem (scrub)
 
 Estas acompanham a barra de rolagem: rolar para trás desfaz o movimento.
@@ -59,6 +69,7 @@ Estas acompanham a barra de rolagem: rolar para trás desfaz o movimento.
 | `.recurso-tela img` | zoom de 1,08 para 1, dentro da moldura | entra por baixo → centro da tela |
 | `.aparelho` (3 celulares) | sobem em velocidades diferentes, o do meio mais rápido | `.celulares` entra → sai |
 | `.final-selo` (改善 gigante) | gira de −8° a 6° e cresce de 0,9 a 1,05 | `.final` entra → sai |
+| `.progresso` (linha vermelha sob o topo) | enche de 0 a 100% da largura (`scaleX`) | topo da página → fim da página |
 
 `scrub: true` segue a rolagem sem atraso. A janela usa `scrub: 0.6`, que alcança a
 rolagem em 0,6 s e deixa o movimento mais macio.
@@ -86,7 +97,21 @@ Por isso a tabela de modelos não está na lista, só o `<details>` que a envolv
 |---|---|
 | **Cenas** (`Cenas.jsx`) | A imagem atual some em 0,3 s com um zoom leve. Ao mesmo tempo, a nova é decodificada. Quando as duas coisas terminam, a nova entra com zoom de 1,06 para 1 em 0,9 s, e as legendas sobem com 0,08 s entre elas. A imagem nunca aparece pela metade. |
 | **FAQ** (`Faq.jsx`) | A resposta desliza ao abrir (0,45 s) e ao fechar (0,3 s). O `<details>` continua nativo: a busca do navegador, o teclado e o leitor de tela funcionam como antes. Com menos movimento, o navegador abre e fecha sem animação. |
+| **Apoie: valor** (`Apoie.jsx`) | Trocar o valor refaz o QR Code, que entra girando de −4° para 0° e crescendo de 0,85 para 1 (0,5 s, `back.out`), como um carimbo. |
+| **Apoie: copiar** (`Apoie.jsx`) | Copiar a chave ou o "copia e cola" solta 14 pétalas de sakura a partir do botão. Cada uma sobe e se espalha por 0,9 a 1,5 s, girando, e some; o elemento é removido no fim. |
 | **Lupa** (`Lupa.jsx`) | Abre crescendo de 0,96 para 1 e aparecendo (0,45 s). Fecha encolhendo para 0,97 e sumindo (0,25 s), e só depois chama `close()`. O Esc fecha na hora, que é o comportamento nativo do `<dialog>`. |
+
+## Que seguem o mouse
+
+Só com mouse fino (`(hover: hover) and (pointer: fine)`); no toque não existem.
+
+| Onde | O que acontece |
+|---|---|
+| Botões do herói e da chamada final (`App.jsx`, `botoesMagneticos`) | São puxados 30% da distância até o cursor (`gsap.quickTo`, 0,4 s) e voltam com mola (`elastic.out`) ao sair. |
+| Cartão do Pix (`Apoie.jsx`) | Inclina até 5° em cada eixo, seguindo o cursor, com perspectiva de 900 px. Volta reto ao sair. |
+
+`quickTo` cria a animação uma vez e só troca o destino a cada movimento do mouse, sem criar
+uma animação nova por evento.
 
 ## Que continuam no CSS
 
@@ -97,7 +122,8 @@ Transições curtas de interface ficaram em CSS, que é mais leve para isso:
 - barra do topo que fica sólida ao rolar (`.topo.rolou`);
 - menu do celular abrindo (`.menu.aberto`);
 - ponto verde pulsando no selo da demonstração (`@keyframes pulsar`);
-- seta do FAQ girando.
+- seta do FAQ girando;
+- pílulas de valor do Pix (cor ao escolher, leve subida no `:hover`).
 
 ## Como ajustar
 
