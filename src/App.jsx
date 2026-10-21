@@ -62,7 +62,36 @@ function useAnimacoes(pagina) {
         gsap.set(".final-selo", { xPercent: -50, yPercent: -50, x: 0, y: 0 });   // o CSS centraliza com translate(-50%, -50%)
         gsap.fromTo(".final-selo", { rotate: -8, scale: 0.9 }, { rotate: 6, scale: 1.05, ease: "none",
             scrollTrigger: { trigger: ".final", start: "top bottom", end: "bottom top", scrub: true } });
+
+        // barra de progresso de leitura, sob o topo
+        gsap.to(".progresso", { scaleX: 1, ease: "none",
+            scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 0.3 } });
+
+        return botoesMagneticos();
     }, { scope: pagina });
+}
+
+/* Botões principais puxados de leve pelo cursor. Só com mouse (no toque não há "perto"). */
+function botoesMagneticos() {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return undefined;
+    const FORCA = 0.3;   // fração da distância até o cursor que o botão anda
+    const desfazer = gsap.utils.toArray(".heroi-acoes .botao, .final .botao").map((botao) => {
+        const irX = gsap.quickTo(botao, "x", { duration: 0.4, ease: "power3.out" });
+        const irY = gsap.quickTo(botao, "y", { duration: 0.4, ease: "power3.out" });
+        const mover = (e) => {
+            const caixa = botao.getBoundingClientRect();
+            irX((e.clientX - caixa.left - caixa.width / 2) * FORCA);
+            irY((e.clientY - caixa.top - caixa.height / 2) * FORCA);
+        };
+        const soltar = () => gsap.to(botao, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1, 0.4)" });
+        botao.addEventListener("pointermove", mover);
+        botao.addEventListener("pointerleave", soltar);
+        return () => {
+            botao.removeEventListener("pointermove", mover);
+            botao.removeEventListener("pointerleave", soltar);
+        };
+    });
+    return () => desfazer.forEach((f) => f());
 }
 
 export default function App() {

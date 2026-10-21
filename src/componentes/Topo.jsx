@@ -57,6 +57,8 @@ export default function Topo() {
 
                 <a className="botao botao-pequeno" href="#baixar">Baixar grátis</a>
             </div>
+            {/* quanto da página já foi lido: enche conforme rola (animado em App.jsx) */}
+            <div className="progresso" aria-hidden="true"></div>
         </header>
     );
 }
