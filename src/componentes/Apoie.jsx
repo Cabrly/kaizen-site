@@ -22,22 +22,23 @@ function soltarPetalas(origem, palco) {
     const ponto = origem.getBoundingClientRect();
     const x = ponto.left + ponto.width / 2 - caixa.left;
     const y = ponto.top + ponto.height / 2 - caixa.top;
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 18; i++) {
         const petala = document.createElement("span");
         petala.className = "petala";
         petala.setAttribute("aria-hidden", "true");
         palco.append(petala);
+        // voa inteira e só desbota no último meio segundo (desbotar junto com o voo apagava cedo demais)
+        const duracao = gsap.utils.random(1.1, 1.8);
         gsap.fromTo(petala,
-            { x, y, scale: gsap.utils.random(0.6, 1.1), rotate: gsap.utils.random(0, 360), autoAlpha: 1 },
+            { x, y, scale: gsap.utils.random(0.6, 1.1), rotate: gsap.utils.random(0, 360) },
             {
-                x: x + gsap.utils.random(-140, 140),
-                y: y + gsap.utils.random(-170, -40),
+                x: x + gsap.utils.random(-180, 120),
+                y: y + gsap.utils.random(-220, -60),
                 rotate: `+=${gsap.utils.random(120, 420)}`,
-                autoAlpha: 0,
-                duration: gsap.utils.random(0.9, 1.5),
-                ease: "power2.out",
-                onComplete: () => petala.remove()
+                duration: duracao,
+                ease: "power2.out"
             });
+        gsap.to(petala, { autoAlpha: 0, duration: 0.5, delay: duracao - 0.5, ease: "power1.in", onComplete: () => petala.remove() });
     }
 }
 
