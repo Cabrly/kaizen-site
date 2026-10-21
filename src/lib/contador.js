@@ -14,7 +14,7 @@ function contarSite(acao, extra = {}) {
     try {
         const corpo = new Blob([JSON.stringify({ acao, ...extra })], { type: "text/plain" });
         if (!navigator.sendBeacon?.(CONTADOR, corpo)) fetch(CONTADOR, { method: "POST", body: corpo, keepalive: true }).catch(() => {});
-    } catch (erro) {
+    } catch {
         /* contar nunca atrapalha o site */
     }
 }
@@ -24,7 +24,7 @@ function origemDaVisita() {
     let site = (utm || "").toLowerCase();
     try {
         if (!site && document.referrer) site = new URL(document.referrer).hostname.toLowerCase();
-    } catch (erro) { /* referrer estranho */ }
+    } catch { /* referrer estranho */ }
     if (!site || site === location.hostname) return "direto";
     const conhecidos = [["whatsapp", /whatsapp|wa\.me/], ["instagram", /instagram/], ["google", /google\./], ["facebook", /facebook|fb\.|^m\.facebook/],
                         ["x", /(^|\.)x\.com|twitter|t\.co$/], ["linkedin", /linkedin|lnkd/], ["github", /github/], ["youtube", /youtube|youtu\.be/],
@@ -39,7 +39,7 @@ export function iniciarContador() {
             sessionStorage.setItem("kaizen-site.visita", "1");
             contarSite("visita", { origem: origemDaVisita() });
         }
-    } catch (erro) {
+    } catch {
         contarSite("visita", { origem: origemDaVisita() });
     }
 

@@ -58,7 +58,7 @@ async function carregar(chave) {
         const versoes = await (await fetch(`https://api.github.com/repos/${REPO}/releases?per_page=50`)).json();
         downloads = versoes.map((v) => [v.tag_name, v.assets.filter((a) => /(exe|msi|dmg|deb|rpm|AppImage)$/.test(a.name))
             .reduce((soma, a) => soma + a.download_count, 0)]);
-    } catch (erro) {
+    } catch {
         /* sem GitHub, o resto aparece igual */
     }
 
@@ -213,7 +213,7 @@ async function abrir(chave) {
         $("entrar").hidden = true;
         $("painel").hidden = false;
         desenhar();
-    } catch (erro) {
+    } catch {
         $("entrar").hidden = false;
         $("painel").hidden = true;
         $("erro").textContent = erro.message;

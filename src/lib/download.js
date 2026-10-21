@@ -3,6 +3,7 @@
    os links continuam indo pra página de versões. */
 
 import { useEffect, useState } from "react";
+import { useDoNavegador } from "./navegador.js";
 
 export const REPO = "Cabrly/kaizen";
 export const PAGINA_VERSOES = `https://github.com/${REPO}/releases/latest`;
@@ -19,13 +20,10 @@ export function sistemaDoVisitante() {
 }
 
 /**
- * O sistema do visitante, depois de a página montar. No pré-render (e no primeiro quadro)
- * é null: o HTML gerado no build serve pra qualquer sistema, e o React troca depois.
+ * O sistema do visitante. No pré-render (e na hidratação) é null: o HTML gerado no build serve pra qualquer sistema, e o React troca depois.
  */
 export function useSistema() {
-    const [so, setSo] = useState(null);
-    useEffect(() => setSo(sistemaDoVisitante()), []);
-    return so;
+    return useDoNavegador(sistemaDoVisitante, null);
 }
 
 export const NOMES = { windows: "Windows", mac: "Mac", linux: "Linux" };

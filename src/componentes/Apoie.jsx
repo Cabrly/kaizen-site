@@ -47,7 +47,7 @@ function Copiar({ texto, recado, className, aoCopiar, children }) {
         const botao = evento.currentTarget;
         try {
             await navigator.clipboard.writeText(texto);
-        } catch (erro) {
+        } catch {
             // http sem permissão de área de transferência: seleciona pra copiar na mão
             window.prompt("Copie:", texto);
             return;

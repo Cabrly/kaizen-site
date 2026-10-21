@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { APP, ARQUIVOS, NOMES, arquivo } from "../lib/download.js";
+import { useDoNavegador } from "../lib/navegador.js";
 
 /* O app é desenhado com 1280 px de largura e encolhido pra caber na janela, então fica
    igual ao print. Abaixo de 640 px ficaria pequeno demais pra usar: aí fica o print com
@@ -7,6 +8,8 @@ import { APP, ARQUIVOS, NOMES, arquivo } from "../lib/download.js";
 const LARGURA_APP = 1280;
 const LARGURA_MINIMA = 640;
 const DEMO = `${APP}?demo`;
+// ?demo-url=... no endereço do site troca a demo (pra testar uma cópia local do app)
+const lerUrlDemo = () => new URLSearchParams(location.search).get("demo-url") || DEMO;
 
 /** Botão principal: aponta direto pro instalador do sistema do visitante quando dá. */
 function BotaoBaixar({ versao, so }) {
@@ -34,7 +37,7 @@ function Demo() {
     const [ligada, setLigada] = useState(false);   // uma vez carregada, fica
     const [pronta, setPronta] = useState(false);
     const [rodada, setRodada] = useState(0);       // mudar a key recria o iframe: a demo volta ao começo
-    const [urlDemo, setUrlDemo] = useState(DEMO);
+    const urlDemo = useDoNavegador(lerUrlDemo, DEMO);
 
     function encaixar() {
         const tela = telaRef.current, quadro = quadroRef.current;
@@ -46,10 +49,6 @@ function Demo() {
     }
 
     useLayoutEffect(() => {
-        // ?demo-url=... no endereço do site troca a demo (pra testar uma cópia local do app)
-        const outra = new URLSearchParams(location.search).get("demo-url");
-        if (outra) setUrlDemo(outra);
-
         const tela = telaRef.current;
         const medir = () => {
             if (tela.clientWidth >= LARGURA_MINIMA) setLigada(true);

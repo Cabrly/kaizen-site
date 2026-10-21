@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { CARTOES, RECURSOS } from "../conteudo.jsx";
 import { calmo } from "../lib/movimento.js";
+import { useDoNavegador } from "../lib/navegador.js";
+
+// no PC, passar o mouse; no celular (sem mouse), tocar quando a tela aparece
+const lerSemMouse = () => window.matchMedia("(hover: none)").matches;
 
 
 
@@ -26,8 +30,7 @@ function Tela({ recurso, ampliar }) {
     const videoRef = useRef(null);
     const voltar = useRef(null);
     const [tocando, setTocando] = useState(false);
-    // no PC, passar o mouse; no celular (sem mouse), tocar quando a tela aparece
-    const [semMouse, setSemMouse] = useState(false);
+    const semMouse = useDoNavegador(lerSemMouse, false);
 
     function tocar() {
         const filme = videoRef.current;
@@ -44,8 +47,6 @@ function Tela({ recurso, ampliar }) {
             videoRef.current.currentTime = 0;
         }, 350);
     }
-
-    useEffect(() => setSemMouse(window.matchMedia("(hover: none)").matches), []);
 
     useEffect(() => {
         if (!video || !semMouse || calmo || !("IntersectionObserver" in window)) return;

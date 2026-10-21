@@ -5,11 +5,11 @@ import { calmo, gsap, lenis } from "../lib/movimento.js";
 export default function Lupa({ item, fechar }) {
     const caixa = useRef(null);
     const filme = useRef(null);
-    const [semVideo, setSemVideo] = useState(false);   // vídeo que não carrega dá lugar à imagem
+    const [videoQueFalhou, setVideoQueFalhou] = useState(null);   // vídeo que não carrega dá lugar à imagem
+    const semVideo = Boolean(item?.video) && videoQueFalhou === item.video;
 
     useEffect(() => {
         const lupa = caixa.current;
-        setSemVideo(false);
         if (!item || lupa.open) return;
         lupa.showModal();
         lenis?.stop();   // a página atrás não rola enquanto a lupa está aberta
@@ -35,7 +35,7 @@ export default function Lupa({ item, fechar }) {
                 onClick={(e) => e.target === caixa.current && sair()}>
             <button className="lupa-fechar" type="button" aria-label="Fechar" onClick={sair}>×</button>
             {item?.video && !semVideo
-                ? <video ref={filme} src={item.video} muted loop playsInline aria-label={item.alt} onError={() => setSemVideo(true)}></video>
+                ? <video ref={filme} src={item.video} muted loop playsInline aria-label={item.alt} onError={() => setVideoQueFalhou(item.video)}></video>
                 : <img src={item?.imagem} alt={item?.alt ?? ""} />}
         </dialog>
     );
