@@ -246,7 +246,7 @@ export function Requisitos() {
 export function Final() {
     return (
         <section className="final">
-            <span className="final-selo" aria-hidden="true">改善</span>
+            <span className="final-selo" aria-hidden="true"></span>
             <h2>Um passo de cada vez.</h2>
             <p>Comece hoje com uma tarefa pequena.</p>
             <div className="heroi-acoes">

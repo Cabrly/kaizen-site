@@ -25,42 +25,42 @@ export const RECURSOS = [
         titulo: "Kanban que dá vontade de usar",
         texto: <>Arraste as tarefas entre <b>A fazer</b>, <b>Em andamento</b>, <b>Em revisão</b> e <b>Concluído</b>. Categorias, prioridade, prazo, busca e filtros, sem curva de aprendizado.</>,
         lista: ["Barra de progresso que enche conforme você conclui", "Filtros por categoria e prioridade, ordenação por prazo", "Backup em arquivo com um clique"],
-        imagem: "img/telas/kanban-enso.webp", video: "img/videos/kanban.mp4", rotulo: "Ampliar imagem do kanban",
+        imagem: "img/telas/kanban-enso.webp", video: "img/videos/kanban.mp4",
         alt: "Kanban do Kaizen com tarefas de trabalho, estudos e pessoais, cada uma com categoria, prioridade e prazo."
     },
     {
         titulo: "Plano de estudos montado pela IA",
         texto: "Escreva “quero aprender React”. A IA faz três perguntas rápidas, você escolhe os dias e o tempo, e em cerca de um minuto o calendário está pronto.",
         lista: [<>Cada sessão traz <b>vídeo</b>, <b>documentação oficial</b> e <b>atividade prática</b></>, "Materiais em português, inglês ou espanhol", "Não deu tempo? Marque ✕ e o item passa pra próxima sessão"],
-        imagem: "img/telas/sessao.webp", video: "img/videos/estudos.mp4", rotulo: "Ampliar imagem da aba Estudos",
+        imagem: "img/telas/sessao.webp", video: "img/videos/estudos.mp4",
         alt: "Aba Estudos com o calendário de outubro e a sessão do dia aberta, mostrando vídeo, documentação e atividade."
     },
     {
         titulo: "Um assistente que conhece seu quadro",
         texto: "Pergunte por onde começar, peça pra quebrar uma tarefa grande ou tire uma dúvida do estudo. A resposta vem formatada, direto ao ponto.",
         lista: ["IA no seu computador, de graça na nuvem ou pela sua assinatura", "Você escolhe o modelo e onde ele roda"],
-        imagem: "img/telas/chat.webp", video: "img/videos/chat.mp4", rotulo: "Ampliar imagem do assistente",
+        imagem: "img/telas/chat.webp", video: "img/videos/chat.mp4",
         alt: "Conversa com o assistente: ele sugere a ordem das três entregas da semana com base no quadro."
     },
     {
         titulo: "Flashcards prontos e uma IA que sabe o que você já estudou",
         texto: "Marcou ✓ numa sessão? Os cartões daquele conteúdo ficam prontos sozinhos, em segundo plano. É só abrir e revisar.",
         lista: ["Revisão espaçada: o que você acerta volta cada vez mais tarde, o que erra volta logo", "A IA recebe um resumo do seu progresso e explica a partir do que você já sabe", "Planos novos não repetem o básico que você já viu"],
-        imagem: "img/telas/flashcards.webp", video: "img/videos/flashcards.mp4", rotulo: "Ampliar imagem dos flashcards",
+        imagem: "img/telas/flashcards.webp", video: "img/videos/flashcards.mp4",
         alt: "Flashcard de React virado, com a pergunta, a resposta e os botões Errei e Acertei."
     },
     {
         titulo: "Pets de estudo (se você quiser)",
         texto: "Cada plano vira um bichinho. Estudou no dia, ele fica feliz; deixou a sessão pra trás, ele fica tristinho até você recuperar. Enquanto a IA monta o plano, você adota o seu.",
         lista: ["24 bichos, mais de 80 roupinhas e acessórios, comprados com os pontos do estudo", "A ficha do pet guarda tudo o que vocês estudaram, com as notas das atividades"],
-        imagem: "img/telas/pets.webp", video: "img/videos/pets.mp4", rotulo: "Ampliar imagem dos pets",
+        imagem: "img/telas/pets.webp", video: "img/videos/pets.mp4",
         alt: "Loja dos pets de estudo com gato, cachorro, hamster, coelho, pintinho, sapo, ratinho, raposa, panda, urso, coala e pinguim."
     },
     {
         titulo: "Entregue a atividade e receba nota",
         texto: "Fez a atividade? Entregue escrevendo a resposta, anexando os arquivos do código ou colando o link do GitHub. Com uma IA forte conectada, ela corrige como um professor: nota de 0 a 10, o que ficou bom, onde errou (com a linha) e como melhorar.",
         lista: ["Os pontos em que você teve dificuldade viram reforço nos próximos planos, flashcards e no chat", "Lê o README e os arquivos principais de um repositório público do GitHub", "Corrige com Claude Code, Gemini, ChatGPT ou modelos grandes do OpenRouter"],
-        imagem: "img/telas/entrega.webp", rotulo: "Ampliar imagem da correção de uma atividade",
+        imagem: "img/telas/entrega.webp",
         alt: "Janela de entrega com duas correções: nota 3 com os erros apontados linha a linha e nota 8 depois de corrigir."
     }
 ];

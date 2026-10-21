@@ -21,7 +21,7 @@ export function Cartoes({ itens }) {
 
 /** Print do app que vira vídeo: passa o mouse (ou aparece na tela, no celular) e ela cresce e mostra o app em uso. */
 function Tela({ recurso, ampliar }) {
-    const { imagem, video, alt, rotulo } = recurso;
+    const { imagem, video, alt } = recurso;
     const telaRef = useRef(null);
     const videoRef = useRef(null);
     const voltar = useRef(null);
@@ -61,7 +61,9 @@ function Tela({ recurso, ampliar }) {
 
     return (
         <button ref={telaRef} className={tocando ? "recurso-tela ampliar tocando" : "recurso-tela ampliar"} type="button"
-                aria-label={rotulo} onClick={() => ampliar({ imagem, video, alt })} {...comMouse}>
+                onClick={() => ampliar({ imagem, video, alt })} {...comMouse}>
+            {/* o nome do botão é o próprio texto: "Ampliar imagem:" + a descrição da tela */}
+            <span className="so-leitor">Ampliar imagem: </span>
             <img src={imagem} width="2880" height="1800" loading="lazy" alt={alt} />
             {video && <>
                 <video ref={videoRef} src={video} muted loop playsInline preload="none" aria-hidden="true"></video>

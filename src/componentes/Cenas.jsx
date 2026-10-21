@@ -48,7 +48,7 @@ export default function Cenas() {
 
     return (
         <div className="cenas" ref={raiz}>
-            <div className="cenas-palco">
+            <div className="cenas-palco" id="cena-painel" role="tabpanel" aria-labelledby={`cena-${CENAS[escolhida].id}`}>
                 <img className="cenas-imagem" ref={imagem} src={imagemDa(cena)} width="2880" height="1800" loading="lazy" alt={cena.alt} />
                 <div className="cenas-legenda" aria-live="polite">
                     <p className="cenas-quando"><span>A cada tarefa</span><b>{cena.cada}</b></p>
@@ -58,7 +58,7 @@ export default function Cenas() {
 
             <div className="cenas-lista" role="tablist" aria-label="Escolher cena">
                 {CENAS.map((c, i) => (
-                    <button key={c.id} role="tab" aria-selected={i === escolhida} tabIndex={i === escolhida ? 0 : -1}
+                    <button key={c.id} id={`cena-${c.id}`} role="tab" aria-controls="cena-painel" aria-selected={i === escolhida} tabIndex={i === escolhida ? 0 : -1}
                             ref={(aba) => (abas.current[i] = aba)}
                             onClick={() => escolher(i)} onKeyDown={(e) => setas(e, i)}>
                         <img src={imagemDa(c)} alt="" loading="lazy" /><span>{c.nome}</span>
