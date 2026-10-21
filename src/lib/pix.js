@@ -10,13 +10,18 @@ function campo(id, valor) {
     return id + String(valor.length).padStart(2, "0") + valor;
 }
 
-export function brCode(chave, nome, cidade) {
+/**
+ * O texto do "Pix copia e cola" (e do QR Code). Com `valor` (em reais), o banco já abre com a
+ * quantia preenchida; sem ele, quem paga escolhe quanto.
+ */
+export function brCode(chave, nome, cidade, valor) {
     const conta = campo("00", "br.gov.bcb.pix") + campo("01", chave);
     const corpo =
         campo("00", "01") +
         campo("26", conta) +
         campo("52", "0000") +
         campo("53", "986") +
+        (valor > 0 ? campo("54", valor.toFixed(2)) : "") +
         campo("58", "BR") +
         campo("59", limpar(nome || "KAIZEN", 25)) +
         campo("60", limpar(cidade || "BRASIL", 15)) +
@@ -26,7 +31,7 @@ export function brCode(chave, nome, cidade) {
 }
 
 /* CRC16-CCITT (polinômio 0x1021, início 0xFFFF), como pede o manual do Pix. */
-function crc16(texto) {
+export function crc16(texto) {
     let crc = 0xffff;
     for (let i = 0; i < texto.length; i++) {
         crc ^= texto.charCodeAt(i) << 8;

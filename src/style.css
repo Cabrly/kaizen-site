@@ -527,13 +527,40 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
 .apoie-outros { margin-top: 18px; }
 
 .pix {
+    position: relative;   /* as pétalas do "obrigado" voam a partir daqui */
     display: flex; flex-direction: column; align-items: center; gap: 10px;
     padding: 36px 32px; text-align: center;
     background: var(--branco); border-radius: 20px; box-shadow: var(--sombra);
 }
+
+/* valores prontos: rádios de verdade (teclado e leitor de tela de graça), com cara de pílula */
+.pix-valores {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin: 0 0 14px; padding: 0; border: 0;
+}
+.pix-valores legend { width: 100%; margin-bottom: 10px; padding: 0; }
+.pix-valor { position: relative; cursor: pointer; }
+.pix-valor input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.pix-valor span {
+    display: inline-block; padding: 8px 16px; border-radius: 999px;
+    font-size: 15px; font-weight: 700; color: var(--tinta-2);
+    border: 1.5px solid var(--linha); background: var(--papel);
+    transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+.pix-valor:hover span { border-color: var(--vermelho); transform: translateY(-1px); }
+.pix-valor input:checked + span { color: #fff; background: var(--vermelho); border-color: var(--vermelho); }
+.pix-valor input:focus-visible + span { outline: 3px solid var(--vermelho); outline-offset: 3px; }
+
 .pix-qr {
-    display: grid; place-items: center; width: 220px; aspect-ratio: 1; margin-bottom: 10px;
+    display: grid; place-items: center; width: 220px; aspect-ratio: 1;
     border-radius: 12px; background: var(--papel);
+}
+.pix-quanto { margin-bottom: 10px; font-size: 14px; color: var(--tinta-2); }
+.pix-quanto b { color: var(--vermelho); }
+
+.petala {
+    position: absolute; left: 0; top: 0; width: 12px; height: 9px; pointer-events: none;
+    border-radius: 80% 0 80% 0; background: linear-gradient(135deg, #ffd1dc, #ff8fab);
 }
 .pix-qr svg { width: 100%; height: 100%; }
 .pix-sem-chave .pix-qr::before { content: "QR Code em breve"; font-size: 14px; color: var(--tinta-3); }
