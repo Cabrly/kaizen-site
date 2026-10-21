@@ -1,1 +1,5 @@
 teste-*.html
+legacy
+node_modules/
+dist/
+.gstack/
