@@ -1,0 +1,6 @@
+# LF no repositório e na cópia de trabalho, em qualquer sistema (o CI roda em Linux)
+* text=auto eol=lf
+*.jpg binary
+*.png binary
+*.webp binary
+*.mp4 binary
