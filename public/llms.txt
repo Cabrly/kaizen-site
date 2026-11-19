@@ -7,7 +7,8 @@ Este arquivo resume o site %SITE_URL%/ para assistentes de IA e ferramentas de b
 ## O que o Kaizen faz
 
 - Tarefas: colunas A fazer e Concluído, com categorias, prioridade, prazo, busca, filtros, barra de progresso e backup em arquivo.
-- Jornada: o plano de estudos vira uma trilha de fases (cada fase concluída acende uma fogueira numa floresta), com sequência de dias seguidos.
+- Jornada: o plano de estudos vira uma trilha de fases (cada fase concluída acende uma fogueira numa floresta ou uma boia no mar, com três níveis de zoom), com sequência de dias seguidos.
+- Questões de marcar: atividades com questões viram uma prática em telas (uma por vez), com resultado, gabarito e resolução no final.
 - Planos prontos: 34 planos que entram no calendário sem IA e sem espera, com filtro por área. ENEM e vestibular (redação, matemática, funções e geometria, física, química, biologia, história do Brasil e geral, geografia, filosofia e sociologia, literatura, português, inglês, atualidades), programação (JavaScript, Python, HTML e CSS, React, Git, SQL), concursos e direito, finanças e negócios, inglês, saúde, fotografia, música e psicologia.
 - Plano de estudos montado pela IA: a pessoa escreve o assunto (ex.: "quero aprender React"), responde três perguntas rápidas (nível, objetivo e base), escolhe os dias da semana, o tempo por dia e por quantas semanas, e em cerca de um minuto o calendário está pronto. Cada sessão traz vídeo, documentação oficial e atividade prática. Materiais em português, inglês ou espanhol. Item não feito passa pra próxima sessão.
 - A IA nunca inventa link: ela só monta o roteiro (tópicos, ordem, objetivos e atividades). Quem busca os materiais é o próprio Kaizen: vídeos do YouTube que cabem no tempo da sessão e a página certa da documentação oficial. As datas são calculadas pelo código.

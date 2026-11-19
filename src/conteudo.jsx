@@ -15,16 +15,16 @@ export const DESTAQUES = [
 /* ---------- Novidades (as mais importantes das últimas versões) ---------- */
 
 export const NOVIDADES = [
+    { versao: "2.0", titulo: "Questões de marcar, uma por vez", texto: "A atividade vira uma prática em telas: você marca uma alternativa por questão e só no final vê o resultado, com o gabarito e a resolução de cada uma. Dá pra voltar, refazer e marcar a atividade como feita ali mesmo.",
+      icone: <path d="M9 11l3 3 8-8M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/> },
+    { versao: "2.0", titulo: "Jornada no mar ou na floresta", texto: "Escolha o cenário da trilha, aproxime ou afaste com os três níveis de zoom e toque no 📍 pra ir direto à fase em que você está. Boias e faróis marcam o caminho no mar.",
+      icone: <path d="M3 12c2 0 2-3 4.5-3S10 12 12.5 12 15 9 17.5 9 20 12 21 12M3 18c2 0 2-3 4.5-3S10 18 12.5 18 15 15 17.5 15 20 18 21 18"/> },
     { versao: "2.0", titulo: "Jornada: seus estudos viram uma trilha", texto: "Cada fase concluída acende uma fogueira na floresta e o céu amanhece com o seu progresso. Chega de lista: você vê até onde já chegou.",
       icone: <path d="M3 18c3 0 3-6 6-6s3 4 6 4 3-8 6-8M3 21h18"/> },
     { versao: "2.0", titulo: "Comece em 30 segundos", texto: "34 planos prontos, de ENEM e vestibular a programação, saúde, finanças e idiomas: escolha, marque os dias e já está no calendário. Sem IA e sem espera.",
       icone: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/> },
     { versao: "2.0", titulo: "Sequência de dias", texto: "Veja quantos dias seguidos você estudou. Perdeu um dia? Recomeça sem drama, e o seu recorde fica guardado.",
       icone: <path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9Z"/> },
-    { versao: "2.0", titulo: "Visual novo, claro e escuro", texto: "Quatro cores (índigo, rosa, verde e laranja), tema claro ou escuro e uma barra de navegação feita pro celular, com texto sempre legível.",
-      icone: <><circle cx="12" cy="12" r="9"/><path d="M12 3v18M12 3a9 9 0 0 1 0 18"/></> },
-    { versao: "1.8", titulo: "Estudo no seu ritmo", texto: "Tranquilo, Equilibrado ou Intenso: com mais tempo por dia, o plano traz vários tópicos. Mudou a rotina? Remarque os dias sem perder o que já estudou.",
-      icone: <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 15h3"/></> },
     { versao: "1.8", titulo: "Flashcards que ficam", texto: "Os cartões não somem depois de acertar. Ficam guardados e o modo prova repassa tudo antes da avaliação.",
       icone: <><rect x="4" y="6" width="13" height="14" rx="2"/><path d="M8 3h11a1 1 0 0 1 1 1v13"/></> },
     { versao: "1.8", titulo: "Documentação certeira em 30 áreas", texto: "Direito, saúde, engenharia, contabilidade e mais: a busca começa pelas fontes oficiais de cada área, como Planalto, STF e SciELO.",
@@ -49,6 +49,13 @@ export const RECURSOS = [
         lista: ["Veja de relance onde você está e o que vem a seguir", "Fases livres: o Kaizen só recomenda fazer as anteriores, sem trancar nada", "Uma sequência de dias seguidos pra manter o ritmo"],
         imagem: "img/telas/jornada.webp",
         alt: "Tela Jornada do Kaizen: a fase atual em destaque e a trilha de fases sobre uma floresta noturna, com o pet na primeira fase."
+    },
+    {
+        titulo: "Treine com questões de marcar",
+        texto: "Planos com questões viram uma prática no estilo de um app de idiomas: uma questão por tela, uma alternativa por vez e a nota só no final, com o gabarito comentado.",
+        lista: ["Volte e troque uma resposta antes de ver o resultado", "Cada erro vem com a resposta certa e a resolução", "Marque a atividade como feita sem sair da janela, no computador ou no celular"],
+        imagem: "img/telas/questoes.webp",
+        alt: "Janela de prática do Kaizen com o resultado de 3 questões: duas certas em verde e uma errada em vermelho, cada uma com a resposta, o gabarito e a resolução."
     },
     {
         titulo: "Comece em 30 segundos, sem esperar a IA",
