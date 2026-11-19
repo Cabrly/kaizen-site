@@ -49,7 +49,7 @@ function Tela({ recurso, ampliar }) {
     }
 
     useEffect(() => {
-        if (!video || !semMouse || calmo || !("IntersectionObserver" in window)) return;
+        if (!video || calmo || !("IntersectionObserver" in window)) return;
         const olho = new IntersectionObserver(([entrada]) => (entrada.isIntersecting ? tocar() : parar()), { threshold: 0.6 });
         olho.observe(telaRef.current);
         return () => {
@@ -58,7 +58,8 @@ function Tela({ recurso, ampliar }) {
         };
     }, [video, semMouse]);
 
-    const comMouse = video && !semMouse ? { onMouseEnter: tocar, onMouseLeave: parar, onFocus: tocar, onBlur: parar } : {};
+    // o clipe toca sozinho, em loop, enquanto a tela aparece (como um GIF); sem mouse nem toque necessários
+    const comMouse = {};
 
     return (
         <button ref={telaRef} className={tocando ? "recurso-tela ampliar tocando" : "recurso-tela ampliar"} type="button"
@@ -67,8 +68,7 @@ function Tela({ recurso, ampliar }) {
             <span className="so-leitor">Ampliar imagem: </span>
             <img src={imagem} width="2880" height="1800" loading="lazy" alt={alt} />
             {video && <>
-                <video ref={videoRef} src={video} muted loop playsInline preload="none" aria-hidden="true"></video>
-                <span className="recurso-play" aria-hidden="true">▶ Ver em ação</span>
+                <video ref={videoRef} src={video} muted loop playsInline preload="metadata" aria-hidden="true"></video>
             </>}
         </button>
     );

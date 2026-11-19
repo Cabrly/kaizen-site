@@ -48,6 +48,7 @@ export const RECURSOS = [
         texto: "O plano de estudos vira uma trilha de fases, como num jogo. Cada sessão concluída acende uma fogueira na floresta, o céu amanhece conforme você avança e o seu pet espera na fase em que você parou.",
         lista: ["Veja de relance onde você está e o que vem a seguir", "Fases livres: o Kaizen só recomenda fazer as anteriores, sem trancar nada", "Uma sequência de dias seguidos pra manter o ritmo"],
         imagem: "img/telas/jornada.webp",
+        video: "img/videos/jornada.mp4",
         alt: "Tela Jornada do Kaizen: a fase atual em destaque e a trilha de fases sobre uma floresta noturna, com o pet na primeira fase."
     },
     {
@@ -55,6 +56,7 @@ export const RECURSOS = [
         texto: "Planos com questões viram uma prática no estilo de um app de idiomas: uma questão por tela, uma alternativa por vez e a nota só no final, com o gabarito comentado.",
         lista: ["Volte e troque uma resposta antes de ver o resultado", "Cada erro vem com a resposta certa e a resolução", "Marque a atividade como feita sem sair da janela, no computador ou no celular"],
         imagem: "img/telas/questoes.webp",
+        video: "img/videos/questoes.mp4",
         alt: "Janela de prática do Kaizen com o resultado de 3 questões: duas certas em verde e uma errada em vermelho, cada uma com a resposta, o gabarito e a resolução."
     },
     {
@@ -62,6 +64,7 @@ export const RECURSOS = [
         texto: "34 planos prontos pra começar na hora: 15 de ENEM e vestibular (redação, matemática, física, química, biologia, história, geografia, literatura e mais) e outros de programação, concursos, direito, finanças, inglês, saúde, fotografia e música. Escolha um, marque os dias e ele já aparece no calendário.",
         lista: ["Funciona sem IA, sem chave e sem internet pra montar", "Filtro por área e busca: ENEM, concursos, saúde, idiomas…", "Mais de 300 links de documentação e enciclopédia, conferidos um a um", "Quer outro assunto? A IA monta um plano sob medida"],
         imagem: "img/telas/galeria.webp",
+        video: "img/videos/galeria.mp4",
         alt: "Tela inicial de quem chega: planos prontos de áreas diferentes (ENEM por onde começar, Aprender a aprender, Educação financeira e JavaScript do zero), cada um com o botão Começar."
     },
     {
@@ -69,6 +72,7 @@ export const RECURSOS = [
         texto: <>Arraste as tarefas de <b>A fazer</b> pra <b>Concluído</b>. Categorias, prioridade, prazo, busca e filtros, sem curva de aprendizado. Simples de propósito: o foco do Kaizen são os seus estudos.</>,
         lista: ["Barra de progresso que enche conforme você conclui", "Filtros por categoria e prioridade, ordenação por prazo", "Backup em arquivo com um clique"],
         imagem: "img/telas/kanban-enso.webp",
+        video: "img/videos/tarefas.mp4",
         alt: "Tarefas do Kaizen em duas colunas, A fazer e Concluído, cada tarefa com categoria, prioridade e prazo."
     },
     {
@@ -76,6 +80,7 @@ export const RECURSOS = [
         texto: "Escreva “quero aprender React”. A IA faz três perguntas rápidas, você escolhe os dias e o tempo, e em cerca de um minuto o calendário está pronto.",
         lista: [<>Cada sessão traz <b>vídeo</b>, <b>documentação oficial</b> e <b>atividade prática</b></>, "Materiais em português, inglês ou espanhol", "Não deu tempo? Marque ✕ e o item passa pra próxima sessão"],
         imagem: "img/telas/sessao.webp",
+        video: "img/videos/sessao.mp4",
         alt: "Calendário de novembro com a sessão do dia aberta, mostrando vídeo, documentação e atividade pra entregar."
     },
     {
@@ -83,6 +88,7 @@ export const RECURSOS = [
         texto: "Pergunte por onde começar, peça pra quebrar uma tarefa grande ou tire uma dúvida do estudo. A resposta vem formatada, direto ao ponto.",
         lista: ["IA no seu computador, de graça na nuvem ou pela sua assinatura", "Você escolhe o modelo e onde ele roda"],
         imagem: "img/telas/chat.webp",
+        video: "img/videos/chat.mp4",
         alt: "Conversa com o assistente: ele sugere a ordem das três entregas da semana com base no quadro."
     },
     {
@@ -90,6 +96,7 @@ export const RECURSOS = [
         texto: "Marcou ✓ numa sessão? Os cartões daquele conteúdo ficam prontos sozinhos, em segundo plano. É só abrir e revisar.",
         lista: ["Revisão espaçada: o que você acerta volta cada vez mais tarde, o que erra volta logo", "A IA recebe um resumo do seu progresso e explica a partir do que você já sabe", "Planos novos não repetem o básico que você já viu"],
         imagem: "img/telas/flashcards.webp",
+        video: "img/videos/flashcards.mp4",
         alt: "Flashcard de React virado, com a pergunta, a resposta e os botões Errei e Acertei."
     },
     {
@@ -97,6 +104,7 @@ export const RECURSOS = [
         texto: "Cada plano vira um bichinho. Estudou no dia, ele fica feliz; deixou a sessão pra trás, ele fica tristinho até você recuperar. Enquanto a IA monta o plano, você adota o seu.",
         lista: ["24 bichos, mais de 80 roupinhas e acessórios, comprados com os pontos do estudo", "A ficha do pet guarda tudo o que vocês estudaram, com as notas das atividades"],
         imagem: "img/telas/pets.webp",
+        video: "img/videos/pets.mp4",
         alt: "Loja dos pets de estudo com gato, cachorro, hamster, coelho, pintinho, sapo, ratinho, raposa, panda, urso, coala e pinguim."
     },
     {
@@ -104,6 +112,7 @@ export const RECURSOS = [
         texto: "Fez a atividade? Entregue escrevendo a resposta, anexando os arquivos do código ou colando o link do GitHub. Com uma IA forte conectada, ela corrige como um professor: nota de 0 a 10, o que ficou bom, onde errou (com a linha) e como melhorar.",
         lista: ["Os pontos em que você teve dificuldade viram reforço nos próximos planos, flashcards e no chat", "Lê o README e os arquivos principais de um repositório público do GitHub", "Corrige com Claude Code, Gemini, ChatGPT ou modelos grandes do OpenRouter"],
         imagem: "img/telas/entrega.webp",
+        video: "img/videos/entrega.mp4",
         alt: "Janela de entrega com duas correções: nota 3 com os erros apontados linha a linha e nota 8 depois de corrigir."
     }
 ];

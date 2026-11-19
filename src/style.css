@@ -349,7 +349,7 @@ kbd { border: 1px solid currentColor; background: none; border-bottom-width: 2px
     opacity: 0; transition: opacity .35s ease;
 }
 .recurso-tela.tocando video { opacity: 1; }
-.recurso-tela.tocando { transform: translateY(-4px) scale(1.04); z-index: 2; box-shadow: 0 40px 80px -28px rgba(23, 23, 23, .45), 0 0 0 1px var(--linha); }
+.recurso-tela.tocando { transform: none; z-index: 2; box-shadow: 0 40px 80px -28px rgba(23, 23, 23, .45), 0 0 0 1px var(--linha); }
 .recurso-play {
     position: absolute; right: 14px; bottom: 14px;
     padding: 7px 12px; border-radius: 999px;
