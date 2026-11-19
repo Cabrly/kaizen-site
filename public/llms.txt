@@ -6,14 +6,16 @@ Este arquivo resume o site %SITE_URL%/ para assistentes de IA e ferramentas de b
 
 ## O que o Kaizen faz
 
-- Kanban de tarefas: colunas A fazer, Em andamento, Em revisão e Concluído. Categorias, prioridade, prazo, busca, filtros, barra de progresso e backup em arquivo com um clique.
+- Tarefas: colunas A fazer e Concluído, com categorias, prioridade, prazo, busca, filtros, barra de progresso e backup em arquivo.
+- Jornada: o plano de estudos vira uma trilha de fases (cada fase concluída acende uma fogueira numa floresta), com sequência de dias seguidos.
+- Planos prontos: 34 planos que entram no calendário sem IA e sem espera, com filtro por área. ENEM e vestibular (redação, matemática, funções e geometria, física, química, biologia, história do Brasil e geral, geografia, filosofia e sociologia, literatura, português, inglês, atualidades), programação (JavaScript, Python, HTML e CSS, React, Git, SQL), concursos e direito, finanças e negócios, inglês, saúde, fotografia, música e psicologia.
 - Plano de estudos montado pela IA: a pessoa escreve o assunto (ex.: "quero aprender React"), responde três perguntas rápidas (nível, objetivo e base), escolhe os dias da semana, o tempo por dia e por quantas semanas, e em cerca de um minuto o calendário está pronto. Cada sessão traz vídeo, documentação oficial e atividade prática. Materiais em português, inglês ou espanhol. Item não feito passa pra próxima sessão.
 - A IA nunca inventa link: ela só monta o roteiro (tópicos, ordem, objetivos e atividades). Quem busca os materiais é o próprio Kaizen: vídeos do YouTube que cabem no tempo da sessão e a página certa da documentação oficial. As datas são calculadas pelo código.
 - Assistente que conhece o quadro: diz por onde começar, quebra tarefas grandes e tira dúvidas do estudo.
 - Flashcards prontos ao marcar uma sessão como feita, com revisão espaçada. A IA recebe um resumo do progresso e explica a partir do que a pessoa já sabe.
 - Entrega de atividades com correção: resposta escrita, arquivos de código ou link de repositório público do GitHub. Com uma IA forte conectada (Claude Code, Gemini, ChatGPT ou modelos grandes do OpenRouter), dá nota de 0 a 10, aponta erros com a linha e sugere como melhorar.
 - Pets de estudo (opcional): cada plano vira um bichinho que fica feliz quando a pessoa estuda. 24 bichos e mais de 80 roupinhas e acessórios, comprados com os pontos do estudo.
-- Cenas de fundo que ganham vida conforme as tarefas são concluídas (pagode lofi, Fuji ao amanhecer, ensō dourado, ameixeira ao luar, bambuzal, montanhas ao pôr do sol).
+- Visual em quatro cores (índigo, rosa, verde, laranja), tema claro e escuro, e navegação própria pro celular.
 - Estudo em turma: o plano é compartilhado por link ou QR Code, sem o progresso de quem mandou.
 - Sessões no Google Agenda, no iPhone ou no Outlook, com aviso antes de cada uma. Resumo da semana todo domingo.
 - Acessibilidade: texto maior, alto contraste, menos movimento, texto espaçado e leitura em voz alta.

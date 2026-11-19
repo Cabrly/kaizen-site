@@ -75,8 +75,8 @@ function Demo() {
                     <a className="janela-botao" href={urlDemo} target="_blank" rel="noopener">Tela cheia ↗</a>
                 </div>
                 <div className="janela-tela" ref={telaRef}>
-                    <img src="img/telas/kanban.webp" width="2880" height="1800" fetchPriority="high"
-                         alt="Quadro kanban do Kaizen com as colunas A fazer, Em andamento, Em revisão e Concluído, sobre a cena do pagode à noite." />
+                    <img src="img/telas/jornada.webp" width="2880" height="1800" fetchPriority="high"
+                         alt="Tela Jornada do Kaizen: a trilha de fases sobre uma floresta noturna, com a fase atual em destaque." />
                     <a className="demo-abrir-celular botao" href={urlDemo} target="_blank" rel="noopener">Experimentar a demonstração</a>
                     {ligada && (
                         <iframe key={rodada} title="Demonstração interativa do Kaizen" src={urlDemo}

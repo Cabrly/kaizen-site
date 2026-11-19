@@ -1,6 +1,6 @@
 /* Seções só de conteúdo: texto e imagem, sem estado. */
 
-import { DESTAQUES, MODELOS, NIVEIS, PRIVACIDADE } from "../conteudo.jsx";
+import { DESTAQUES, MODELOS, NIVEIS, NOVIDADES, PRIVACIDADE } from "../conteudo.jsx";
 import { APP } from "../lib/download.js";
 import { Cartoes } from "./Recursos.jsx";
 import { Marca } from "./Topo.jsx";
@@ -11,6 +11,29 @@ export function Faixa() {
     return (
         <section className="faixa" aria-label="Destaques">
             <ul>{DESTAQUES.map(([forte, fraco]) => <li key={forte}><strong>{forte}</strong><span>{fraco}</span></li>)}</ul>
+        </section>
+    );
+}
+
+export function Novidades() {
+    return (
+        <section className="secao secao-noite" id="novidades">
+            <header className="secao-cabeca">
+                <p className="sobretitulo"><span lang="ja">新着</span> · novidades</p>
+                <h2>O que mudou no Kaizen</h2>
+                <p>O app evolui toda semana. Estas são as novidades que mais fazem diferença no dia a dia.</p>
+            </header>
+
+            <ul className="novidades">
+                {NOVIDADES.map(({ versao, titulo, texto, icone }) => (
+                    <li className="novidade" key={titulo}>
+                        <span className="novidade-versao">v{versao}</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">{icone}</svg>
+                        <h3>{titulo}</h3>
+                        <p>{texto}</p>
+                    </li>
+                ))}
+            </ul>
         </section>
     );
 }
@@ -73,9 +96,9 @@ export function Celular() {
                 </div>
 
                 <div className="celulares" aria-label="Telas do Kaizen no celular">
-                    <figure className="aparelho"><img src="img/telas/cel-kanban.webp" width="1170" height="2532" loading="lazy" alt="Kanban no celular, com a cena do monte Fuji ao fundo." /></figure>
+                    <figure className="aparelho"><img src="img/telas/cel-kanban.webp" width="1170" height="2532" loading="lazy" alt="Tarefas do Kaizen no celular." /></figure>
                     <figure className="aparelho aparelho-meio"><img src="img/telas/cel-chat.webp" width="1170" height="2532" loading="lazy" alt="Conversa com o assistente no celular." /></figure>
-                    <figure className="aparelho"><img src="img/telas/cel-estudos.webp" width="1170" height="2532" loading="lazy" alt="Calendário de estudos no celular." /></figure>
+                    <figure className="aparelho"><img src="img/telas/cel-estudos.webp" width="1170" height="2532" loading="lazy" alt="Jornada de estudos no celular." /></figure>
                 </div>
             </div>
         </section>
@@ -177,7 +200,7 @@ export function SuaIa() {
                         <Mock endereco="Kaizen · Assistente IA" kaizen>
                             <span className="mock-titulo">☁ Conectar OpenRouter</span>
                             <span className="mock-campo"><code>sk-or-v1-8f3a…c21e</code></span>
-                            <span className="mock-botao mock-vermelho">Salvar</span>
+                            <span className="mock-botao mock-acento">Salvar</span>
                         </Mock>
                         <h4>Cole no Kaizen</h4>
                         <p>No Kaizen, abra <b>Assistente IA → Onde a IA roda → Conectar OpenRouter</b>, cole e clique em <b>Salvar</b>. Pronto!</p>

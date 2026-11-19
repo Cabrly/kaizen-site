@@ -12,9 +12,31 @@ export const DESTAQUES = [
 ];
 
 
+/* ---------- Novidades (as mais importantes das últimas versões) ---------- */
+
+export const NOVIDADES = [
+    { versao: "2.0", titulo: "Jornada: seus estudos viram uma trilha", texto: "Cada fase concluída acende uma fogueira na floresta e o céu amanhece com o seu progresso. Chega de lista: você vê até onde já chegou.",
+      icone: <path d="M3 18c3 0 3-6 6-6s3 4 6 4 3-8 6-8M3 21h18"/> },
+    { versao: "2.0", titulo: "Comece em 30 segundos", texto: "34 planos prontos, de ENEM e vestibular a programação, saúde, finanças e idiomas: escolha, marque os dias e já está no calendário. Sem IA e sem espera.",
+      icone: <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/> },
+    { versao: "2.0", titulo: "Sequência de dias", texto: "Veja quantos dias seguidos você estudou. Perdeu um dia? Recomeça sem drama, e o seu recorde fica guardado.",
+      icone: <path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9Z"/> },
+    { versao: "2.0", titulo: "Visual novo, claro e escuro", texto: "Quatro cores (índigo, rosa, verde e laranja), tema claro ou escuro e uma barra de navegação feita pro celular, com texto sempre legível.",
+      icone: <><circle cx="12" cy="12" r="9"/><path d="M12 3v18M12 3a9 9 0 0 1 0 18"/></> },
+    { versao: "1.8", titulo: "Estudo no seu ritmo", texto: "Tranquilo, Equilibrado ou Intenso: com mais tempo por dia, o plano traz vários tópicos. Mudou a rotina? Remarque os dias sem perder o que já estudou.",
+      icone: <><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 15h3"/></> },
+    { versao: "1.8", titulo: "Flashcards que ficam", texto: "Os cartões não somem depois de acertar. Ficam guardados e o modo prova repassa tudo antes da avaliação.",
+      icone: <><rect x="4" y="6" width="13" height="14" rx="2"/><path d="M8 3h11a1 1 0 0 1 1 1v13"/></> },
+    { versao: "1.8", titulo: "Documentação certeira em 30 áreas", texto: "Direito, saúde, engenharia, contabilidade e mais: a busca começa pelas fontes oficiais de cada área, como Planalto, STF e SciELO.",
+      icone: <><path d="M5 4h10l4 4v12H5V4Z"/><path d="M14 4v5h5M8 13h8M8 17h6"/></> },
+    { versao: "1.7", titulo: "IA do Kaizen, grátis e sem chave", texto: "Monte planos, gere flashcards e receba correções sem conectar nada. Entrou no app, já funciona.",
+      icone: <path d="M12 3l1.8 4.7L18.5 9l-4.7 1.3L12 15l-1.8-4.7L5.5 9l4.7-1.3L12 3ZM18 15l.9 2.1L21 18l-2.1.9L18 21l-.9-2.1L15 18l2.1-.9L18 15Z"/> }
+];
+
+
 /* ---------- Navegação do topo ---------- */
 
-export const MENU = [["#recursos", "Recursos"], ["#como-funciona", "Como funciona"], ["#sua-ia", "Sua IA"],
+export const MENU = [["#novidades", "Novidades"], ["#recursos", "Recursos"], ["#como-funciona", "Como funciona"], ["#sua-ia", "Sua IA"],
               ["#requisitos", "Requisitos"], ["#perguntas", "Perguntas"], ["#apoie", "Apoie"]];
 
 
@@ -22,38 +44,52 @@ export const MENU = [["#recursos", "Recursos"], ["#como-funciona", "Como funcion
 
 export const RECURSOS = [
     {
-        titulo: "Kanban que dá vontade de usar",
-        texto: <>Arraste as tarefas entre <b>A fazer</b>, <b>Em andamento</b>, <b>Em revisão</b> e <b>Concluído</b>. Categorias, prioridade, prazo, busca e filtros, sem curva de aprendizado.</>,
+        titulo: "Uma jornada, não uma lista",
+        texto: "O plano de estudos vira uma trilha de fases, como num jogo. Cada sessão concluída acende uma fogueira na floresta, o céu amanhece conforme você avança e o seu pet espera na fase em que você parou.",
+        lista: ["Veja de relance onde você está e o que vem a seguir", "Fases livres: o Kaizen só recomenda fazer as anteriores, sem trancar nada", "Uma sequência de dias seguidos pra manter o ritmo"],
+        imagem: "img/telas/jornada.webp",
+        alt: "Tela Jornada do Kaizen: a fase atual em destaque e a trilha de fases sobre uma floresta noturna, com o pet na primeira fase."
+    },
+    {
+        titulo: "Comece em 30 segundos, sem esperar a IA",
+        texto: "34 planos prontos pra começar na hora: 15 de ENEM e vestibular (redação, matemática, física, química, biologia, história, geografia, literatura e mais) e outros de programação, concursos, direito, finanças, inglês, saúde, fotografia e música. Escolha um, marque os dias e ele já aparece no calendário.",
+        lista: ["Funciona sem IA, sem chave e sem internet pra montar", "Filtro por área e busca: ENEM, concursos, saúde, idiomas…", "Mais de 300 links de documentação e enciclopédia, conferidos um a um", "Quer outro assunto? A IA monta um plano sob medida"],
+        imagem: "img/telas/galeria.webp",
+        alt: "Tela inicial de quem chega: planos prontos de áreas diferentes (ENEM por onde começar, Aprender a aprender, Educação financeira e JavaScript do zero), cada um com o botão Começar."
+    },
+    {
+        titulo: "Tarefas sem complicação",
+        texto: <>Arraste as tarefas de <b>A fazer</b> pra <b>Concluído</b>. Categorias, prioridade, prazo, busca e filtros, sem curva de aprendizado. Simples de propósito: o foco do Kaizen são os seus estudos.</>,
         lista: ["Barra de progresso que enche conforme você conclui", "Filtros por categoria e prioridade, ordenação por prazo", "Backup em arquivo com um clique"],
-        imagem: "img/telas/kanban-enso.webp", video: "img/videos/kanban.mp4",
-        alt: "Kanban do Kaizen com tarefas de trabalho, estudos e pessoais, cada uma com categoria, prioridade e prazo."
+        imagem: "img/telas/kanban-enso.webp",
+        alt: "Tarefas do Kaizen em duas colunas, A fazer e Concluído, cada tarefa com categoria, prioridade e prazo."
     },
     {
         titulo: "Plano de estudos montado pela IA",
         texto: "Escreva “quero aprender React”. A IA faz três perguntas rápidas, você escolhe os dias e o tempo, e em cerca de um minuto o calendário está pronto.",
         lista: [<>Cada sessão traz <b>vídeo</b>, <b>documentação oficial</b> e <b>atividade prática</b></>, "Materiais em português, inglês ou espanhol", "Não deu tempo? Marque ✕ e o item passa pra próxima sessão"],
-        imagem: "img/telas/sessao.webp", video: "img/videos/estudos.mp4",
-        alt: "Aba Estudos com o calendário de outubro e a sessão do dia aberta, mostrando vídeo, documentação e atividade."
+        imagem: "img/telas/sessao.webp",
+        alt: "Calendário de novembro com a sessão do dia aberta, mostrando vídeo, documentação e atividade pra entregar."
     },
     {
         titulo: "Um assistente que conhece seu quadro",
         texto: "Pergunte por onde começar, peça pra quebrar uma tarefa grande ou tire uma dúvida do estudo. A resposta vem formatada, direto ao ponto.",
         lista: ["IA no seu computador, de graça na nuvem ou pela sua assinatura", "Você escolhe o modelo e onde ele roda"],
-        imagem: "img/telas/chat.webp", video: "img/videos/chat.mp4",
+        imagem: "img/telas/chat.webp",
         alt: "Conversa com o assistente: ele sugere a ordem das três entregas da semana com base no quadro."
     },
     {
         titulo: "Flashcards prontos e uma IA que sabe o que você já estudou",
         texto: "Marcou ✓ numa sessão? Os cartões daquele conteúdo ficam prontos sozinhos, em segundo plano. É só abrir e revisar.",
         lista: ["Revisão espaçada: o que você acerta volta cada vez mais tarde, o que erra volta logo", "A IA recebe um resumo do seu progresso e explica a partir do que você já sabe", "Planos novos não repetem o básico que você já viu"],
-        imagem: "img/telas/flashcards.webp", video: "img/videos/flashcards.mp4",
+        imagem: "img/telas/flashcards.webp",
         alt: "Flashcard de React virado, com a pergunta, a resposta e os botões Errei e Acertei."
     },
     {
         titulo: "Pets de estudo (se você quiser)",
         texto: "Cada plano vira um bichinho. Estudou no dia, ele fica feliz; deixou a sessão pra trás, ele fica tristinho até você recuperar. Enquanto a IA monta o plano, você adota o seu.",
         lista: ["24 bichos, mais de 80 roupinhas e acessórios, comprados com os pontos do estudo", "A ficha do pet guarda tudo o que vocês estudaram, com as notas das atividades"],
-        imagem: "img/telas/pets.webp", video: "img/videos/pets.mp4",
+        imagem: "img/telas/pets.webp",
         alt: "Loja dos pets de estudo com gato, cachorro, hamster, coelho, pintinho, sapo, ratinho, raposa, panda, urso, coala e pinguim."
     },
     {

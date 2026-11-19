@@ -4,16 +4,15 @@ import { calmo, gsap, ScrollTrigger, useGSAP } from "./lib/movimento.js";
 import Topo from "./componentes/Topo.jsx";
 import Heroi from "./componentes/Heroi.jsx";
 import Recursos from "./componentes/Recursos.jsx";
-import Cenas from "./componentes/Cenas.jsx";
 import Baixar from "./componentes/Baixar.jsx";
 import Faq from "./componentes/Faq.jsx";
 import Apoie from "./componentes/Apoie.jsx";
 import Lupa from "./componentes/Lupa.jsx";
-import { Celular, ComoFunciona, Faixa, Final, Privacidade, Requisitos, Rodape, SuaIa } from "./componentes/Secoes.jsx";
+import { Celular, ComoFunciona, Faixa, Final, Novidades, Privacidade, Requisitos, Rodape, SuaIa } from "./componentes/Secoes.jsx";
 
 // o que surge ao entrar na tela (em grupos, um atrás do outro)
 const SURGEM = [
-    ".faixa li", ".secao-cabeca", ".recurso-texto", ".recurso-tela", ".novos-titulo", ".cartao", ".passos li", ".destaque",
+    ".faixa li", ".novidade", ".em-breve li", ".secao-cabeca", ".recurso-texto", ".recurso-tela", ".novos-titulo", ".cartao", ".passos li", ".destaque",
     ".cenas", ".cenas-dica", ".celular-texto", ".opcao-ia", ".tutorial", ".nivel", ".tabela-detalhe", ".dica", ".sistema",
     ".aviso-windows", ".faq details", ".apoie-texto", ".pix", ".final h2", ".final p", ".final .heroi-acoes"
 ].join(", ");
@@ -109,18 +108,9 @@ export default function App() {
             <main id="conteudo">
                 <Heroi versao={versao} so={so} />
                 <Faixa />
+                <Novidades />
                 <Recursos ampliar={setAmpliado} />
                 <ComoFunciona />
-
-                <section className="secao secao-noite" id="cenas">
-                    <header className="secao-cabeca">
-                        <p className="sobretitulo"><span lang="ja">景色</span> · paisagens</p>
-                        <h2>Cada tarefa concluída muda a paisagem</h2>
-                        <p>Escolha uma cena pro fundo e veja ela ganhar vida conforme você avança. Tudo desenhado em código, sem imagem pra baixar.</p>
-                    </header>
-                    <Cenas />
-                    <p className="cenas-dica">Aperte <kbd>Z</kbd> no app pra ver a cena inteira.</p>
-                </section>
 
                 <Celular />
                 <Privacidade />
